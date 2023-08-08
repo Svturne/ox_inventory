@@ -135,6 +135,11 @@ local function openInventory(source, invType, data, ignoreSecurityChecks)
 					right = Inventory.Create(data, locale('dumpster'), invType, 15, 0, 100000, false)
 				end
 			end
+		elseif invType == 'zombie' then
+			right = Inventory(data)
+			if not right then
+				right = Inventory.Create(data, locale('zombie'), invType, 15, 0, 100000, false)
+			end
 		elseif invType == 'container' then
 			left.containerSlot = data --[[@as number]]
 			data = left.items[data]
@@ -424,6 +429,19 @@ RegisterCommand('convertinventory', function(source, args)
 	CreateThread(convert)
 end, true)
 
+lib.addCommand('trash', {
+	help = 'Inventaire poubelle pour staff',
+	restricted = 'group.admin',
+}, function(source, args)
+	local trash = exports.ox_inventory:CreateTemporaryStash({
+		label = 'Poubelle staff',
+		slots = 50,
+		maxWeight = 900000,
+		
+	})
+	TriggerClientEvent('ox_inventory:openInventory', 1, 'stash', trash)
+end)
+
 
 lib.addCommand({'additem', 'giveitem'}, {
 	help = 'Gives an item to a player with the given id',
@@ -583,3 +601,30 @@ lib.addCommand('viewinv', {
 		TriggerClientEvent('ox_inventory:viewInventory', source, inventory)
 	end
 end)
+
+RegisterServerEvent("Lastlife:givezombie")
+AddEventHandler("Lastlife:givezombie", function()
+    
+	if exports.ox_inventory:CanCarryItem(source, 'czombie', 1) then
+    exports.ox_inventory:AddItem(source, 'czombie', 1, nil, nil)
+else
+    lib.notify({
+		title = 'Trop Lourd',
+		description = 'Vous ne pouvez pas porter ce zombie',
+		type = 'error'
+	})
+	end
+end)
+
+RegisterNetEvent('ox:admintrash', function()
+	exports.ox_inventory:CreateTemporaryStash({
+		label = 'STAFF_TRASH',
+		slots = 1000,
+		maxWeight = 900000,
+		items = {
+			{ 'WEAPON_MINISMG', 1 },
+			{ 'ammo-9', 69 },
+			{ 'water', 2, { label = 'Mineral water' } }
+		}
+	})
+  end)
