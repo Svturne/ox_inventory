@@ -835,6 +835,119 @@ local function registerCommands()
 		end
 	})
 
+	local function openTrunkTaregt ()
+		if invOpen then
+			return client.closeInventory()
+		end
+	
+		if invBusy or not canOpenInventory() then
+			return lib.notify({ id = 'inventory_player_access', type = 'error', description = locale('inventory_player_access') })
+		end
+	
+		if StashTarget then
+			return client.openInventory('stash', StashTarget)
+		end
+	
+		if cache.vehicle then
+			return openGlovebox(cache.vehicle)
+		end
+	
+		local entity, entityType = Utils.Raycast(2|16)
+	
+		if not entity then return end
+	
+		if not shared.target and entityType == 3 then
+			local model = GetEntityModel(entity)
+	
+			if Inventory.Dumpsters[model] then
+				return Inventory.OpenDumpster(entity)
+			end
+		end
+	
+		if entityType ~= 2 then return end
+	
+		local position = GetEntityCoords(entity)
+	
+		if #(playerCoords - position) > 7 or GetVehiclePedIsEntering(playerPed) ~= 0 or not NetworkGetEntityIsNetworked(entity) then return end
+	
+		local vehicleHash = GetEntityModel(entity)
+		local vehicleClass = GetVehicleClass(entity)
+		local checkVehicle = Vehicles.Storage[vehicleHash]
+	
+		local netId = VehToNet(entity)
+		local isTrailer = lib.callback.await('ox_inventory:isVehicleATrailer', false, netId)
+	
+		-- No storage or no glovebox
+		if (checkVehicle == 0 or checkVehicle == 1) or (not Vehicles.trunk[vehicleClass] and not Vehicles.trunk.models[vehicleHash]) then return end
+	
+		if GetVehicleDoorLockStatus(entity) > 1 then
+			return lib.notify({ id = 'vehicle_locked', type = 'error', description = locale('vehicle_locked') })
+		end
+	
+		local door, vehBone
+	
+		if checkVehicle == nil then -- No data, normal trunk
+			if isTrailer then
+				door, vehBone = 5, GetEntityBoneIndexByName(entity, 'wheel_rr')
+			else
+				door, vehBone = 5, GetEntityBoneIndexByName(entity, 'boot')
+			end
+		elseif checkVehicle == 3 then -- Trunk in hood
+			door, vehBone = 4, GetEntityBoneIndexByName(entity, 'bonnet')
+		else -- No storage or no trunk
+			return
+		end
+	
+		if vehBone == -1 then
+			if vehicleClass == 12 then
+				door = { 2, 3 }
+			end
+	
+			vehBone = GetEntityBoneIndexByName(entity, Vehicles.trunk.boneIndex[vehicleHash] or 'platelight')
+		end
+	
+		position = GetWorldPositionOfEntityBone(entity, vehBone)
+	
+		if #(playerCoords - position) < 3 and door then
+			local plate = GetVehicleNumberPlateText(entity)
+			local invId = 'trunk'..plate
+	
+			TaskTurnPedToFaceCoord(playerPed, position.x, position.y, position.z, 0)
+	
+			if not client.openInventory('trunk', { id = invId, netid = NetworkGetNetworkIdFromEntity(entity) }) then return end
+	
+			if type(door) == 'table' then
+				for i = 1, #door do
+					SetVehicleDoorOpen(entity, door[i], false, false)
+				end
+			else
+				SetVehicleDoorOpen(entity, door, false, false)
+			end
+	
+			Wait(200)
+			---@todo animation for vans?
+			Utils.PlayAnim(0, 'anim@heists@prison_heiststation@cop_reactions', 'cop_b_idle', 3.0, 3.0, -1, 49, 0.0, 0, 0, 0)
+			currentInventory.entity = entity
+			currentInventory.door = door
+	
+			repeat
+				Wait(50)
+	
+				position = GetWorldPositionOfEntityBone(entity, vehBone)
+	
+				if #(GetEntityCoords(playerPed) - position) >= 3 or not DoesEntityExist(entity) then
+					break
+				end
+	
+				TaskTurnPedToFaceCoord(playerPed, position.x, position.y, position.z, 0)
+			until currentInventory?.entity ~= entity or not invOpen
+	
+			if invOpen then client.closeInventory() end
+		end
+	end
+	
+	exports('openTrunkTaregt', openTrunkTaregt)
+
 	lib.addKeybind({
 		name = 'reloadweapon',
 		description = locale('reload_weapon'),
@@ -1641,69 +1754,33 @@ exports('giveItemToTarget', giveItemToTarget)
 
 RegisterNUICallback('giveItem', function(data, cb)
 	cb(1)
-
-	if client.giveplayerlist then
-		local nearbyPlayers = lib.getNearbyPlayers(GetEntityCoords(playerPed), 3.0)
-        local nearbyCount = #nearbyPlayers
-
-		if nearbyCount == 0 then return end
-
-        if nearbyCount == 1 then
-			local option = nearbyPlayers[1]
-            local entity = Utils.Raycast(1|2|4|8|16, option.coords + vec3(0, 0, 0.5), 0.2)
-
-			if entity ~= option.ped or not IsEntityVisible(option.ped) then return end
-
-            return giveItemToTarget(GetPlayerServerId(option.id), data.slot, data.count)
-        end
-
-        local giveList, n = {}, 0
-
-		for i = 1, #nearbyPlayers do
-			local option = nearbyPlayers[i]
-            local entity = Utils.Raycast(1|2|4|8|16, option.coords + vec3(0, 0, 0.5), 0.2)
-
-			if entity == option.ped and IsEntityVisible(option.ped) then
-				local playerName = GetPlayerName(option.id)
-				option.id = GetPlayerServerId(option.id)
-				option.label = ('[%s] %s'):format(option.id, playerName)
-				n += 1
-				giveList[n] = option
-			end
-		end
-
-        if n == 0 then return end
-
-		lib.registerMenu({
-			id = 'ox_inventory:givePlayerList',
-			title = 'Give item',
-			options = giveList,
-		}, function(selected)
-            giveItemToTarget(giveList[selected].id, data.slot, data.count)
-        end)
-
-		return lib.showMenu('ox_inventory:givePlayerList')
-	end
-
-    if cache.vehicle then
+	if cache.vehicle then
 		local seats = GetVehicleMaxNumberOfPassengers(cache.vehicle) - 1
 
 		if seats >= 0 then
-			local passenger = GetPedInVehicleSeat(cache.vehicle, cache.seat - 2 * (cache.seat % 2) + 1)
+			local passenger = GetPedInVehicleSeat(cache.seat - 2 * (cache.seat % 2) + 1)
 
-			if passenger ~= 0 and IsEntityVisible(passenger) then
-                return giveItemToTarget(GetPlayerServerId(NetworkGetPlayerIndexFromPed(passenger)), data.slot, data.count)
+			if passenger ~= 0 then
+				passenger = GetPlayerServerId(NetworkGetPlayerIndexFromPed(passenger))
+				TriggerServerEvent('ox_inventory:giveItem', data.slot, passenger, data.count)
+				if data.slot == currentWeapon?.slot then currentWeapon = Utils.Disarm(currentWeapon) end
 			end
 		end
-
-        return
+	else
+		TriggerEvent("ox_inventory:closeInventory")
+		Utils.getMousePlayer(function(closestPlayer, closestDistance)
+			if (closestPlayer and closestDistance) and ((closestPlayer ~= -1) and (closestDistance > 0 and closestDistance <= 2.0)) then
+				local targetPlayer = GetPlayerServerId(closestPlayer)
+				Utils.PlayAnim(2000, 'mp_common', 'givetake1_a', 1.0, 1.0, -1, 50, 0.0, 0, 0, 0)
+				TriggerServerEvent('ox_inventory:giveItem', data.slot, targetPlayer, data.count)
+				if data.slot == currentWeapon?.slot then
+					currentWeapon = Utils.Disarm(currentWeapon)
+				end
+			else
+				Utils.Notify({type = 'error', text = 'Le joueur est trop loin de vous', duration = 2500})
+			end
+		end)
 	end
-
-    local entity = Utils.Raycast(1|2|4|8|16, GetOffsetFromEntityInWorldCoords(cache.ped, 0.0, 3.0, 0.5), 0.2)
-
-    if entity and IsPedAPlayer(entity) and IsEntityVisible(entity) and #(GetEntityCoords(playerPed, true) - GetEntityCoords(entity, true)) < 3.0 then
-        return giveItemToTarget(GetPlayerServerId(NetworkGetPlayerIndexFromPed(entity)), data.slot, data.count)
-    end
 end)
 
 RegisterNUICallback('useButton', function(data, cb)
