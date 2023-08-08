@@ -1,218 +1,1226 @@
 return {
-	['testburger'] = {
-		label = 'Test Burger',
-		weight = 220,
-		degrade = 60,
-		client = {
-			status = { hunger = 200000 },
-			anim = 'eating',
-			prop = 'burger',
-			usetime = 2500,
-			export = 'ox_inventory_examples.testburger'
-		},
-		server = {
-			export = 'ox_inventory_examples.testburger',
-			test = 'what an amazingly delicious burger, amirite?'
-		},
-		buttons = {
-			{
-				label = 'Lick it',
-				action = function(slot)
-					print('You licked the burger')
-				end
-			},
-			{
-				label = 'Squeeze it',
-				action = function(slot)
-					print('You squeezed the burger :(')
-				end
-			},
-			{
-				label = 'What do you call a vegan burger?',
-				group = 'Hamburger Puns',
-				action = function(slot)
-					print('A misteak.')
-				end
-			},
-			{
-				label = 'What do frogs like to eat with their hamburgers?',
-				group = 'Hamburger Puns',
-				action = function(slot)
-					print('French flies.')
-				end
-			},
-			{
-				label = 'Why were the burger and fries running?',
-				group = 'Hamburger Puns',
-				action = function(slot)
-					print('Because they\'re fast food.')
-				end
-			}
-		},
-		consume = 0.3
-	},
+    ['testburger'] = {
+        label = 'Test Burger',
+        weight = 220,
+        degrade = 60,
+        client = {
+            status = {hunger = 200000},
+            anim = 'eating',
+            prop = 'burger',
+            usetime = 2500,
+            export = 'ox_inventory_examples.testburger'
+        },
+        server = {
+            export = 'ox_inventory_examples.testburger',
+            test = 'what an amazingly delicious burger, amirite?'
+        },
+        buttons = {
+            {
+                label = 'Lick it',
+                action = function(slot)
+                    print('You licked the burger')
+                end
+            }, {
+                label = 'Squeeze it',
+                action = function(slot)
+                    print('You squeezed the burger :(')
+                end
+            }
+        }
+    },
 
-	['bandage'] = {
-		label = 'Bandage',
-		weight = 115,
-		client = {
-			anim = { dict = 'missheistdockssetup1clipboard@idle_a', clip = 'idle_a', flag = 49 },
-			prop = { model = `prop_rolled_sock_02`, pos = vec3(-0.14, -0.14, -0.08), rot = vec3(-50.0, -50.0, 0.0) },
-			disable = { move = true, car = true, combat = true },
-			usetime = 2500,
-		}
-	},
+    ['bandage'] = {
+        label = 'Bandage',
+        weight = 115,
+        client = {
+            anim = {
+                dict = 'missheistdockssetup1clipboard@idle_a',
+                clip = 'idle_a',
+                flag = 49
+            },
+            prop = {
+                model = prop_rolled_sock_02,
+                pos = vec3(-0.14, -0.14, -0.08),
+                rot = vec3(-50.0, -50.0, 0.0)
+            },
+            disable = {move = true, car = true, combat = true},
+            usetime = 2500
+        }
+    },
 
-	['black_money'] = {
-		label = 'Dirty Money',
-	},
+    ['medikit'] = {label = 'Medi-kit', weight = 115},
 
-	['burger'] = {
-		label = 'Burger',
-		weight = 220,
-		client = {
-			status = { hunger = 200000 },
-			anim = 'eating',
-			prop = 'burger',
-			usetime = 2500,
-			notification = 'You ate a delicious burger'
-		},
-	},
+    ['tente'] = {label = 'Kit de camping', weight = 1150},
 
-	['cola'] = {
-		label = 'eCola',
-		weight = 350,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `prop_ecola_can`, pos = vec3(0.01, 0.01, 0.06), rot = vec3(5.0, 5.0, -180.5) },
-			usetime = 2500,
-			notification = 'You quenched your thirst with cola'
-		}
-	},
+    ['torch'] = {
+        label = 'Torch',
+        weight = 115,
+        consume = 0,
+        stack = false,
+        degrade = 60
+    },
 
-	['parachute'] = {
-		label = 'Parachute',
-		weight = 8000,
-		stack = false,
-		client = {
-			anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
-			usetime = 1500
-		}
-	},
+    ['black_money'] = {label = 'Argent sale'},
 
-	['garbage'] = {
-		label = 'Garbage',
-	},
+    ['belier'] = {
+        label = 'Bélier',
+        weight = 15000,
+        description = 'Idéal pour défoncer une porte '
+    },
+    ['ble'] = {
+        label = 'Blé',
+        weight = 150,
+        description = 'Provien d\'un champ'
+    },
 
-	['paperbag'] = {
-		label = 'Paper Bag',
-		weight = 1,
-		stack = false,
-		close = false,
-		consume = 0
-	},
+    ['beerbox'] = {
+        label = 'Carton de Bière',
+        weight = 2500,
+        description = 'Entreprise Pibwasser'
+    },
 
-	['identification'] = {
-		label = 'Identification',
-	},
+    ['czombie'] = {
+        label = 'Corp de zombie',
+        weight = 15500,
+        description = 'Corp de zombie très lourd, peut être découpé.'
+    },
 
-	['panties'] = {
-		label = 'Knickers',
-		weight = 10,
-		consume = 0,
-		client = {
-			status = { thirst = -100000, stress = -25000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `prop_cs_panties_02`, pos = vec3(0.03, 0.0, 0.02), rot = vec3(0.0, -13.5, -1.5) },
-			usetime = 2500,
-		}
-	},
+    ['mainzombie'] = {
+        label = 'Mains de zombie',
+        weight = 155,
+        description = 'Mains de zombie infectés'
+    },
 
-	['lockpick'] = {
-		label = 'Lockpick',
-		weight = 160,
-	},
+    ['organenoninfecte'] = {
+        label = 'Glacière',
+        weight = 1500,
+        description = 'Glacière d\'organes non infectés'
+    },
+    ---- drug
+    ['coke_bloc'] = {
+        label = 'Cocaïne en bloc',
+        weight = 15000,
+        stack = false,
+        description = 'Grosse quantité de cocaine en bloc (15kg)'
+    },
 
-	['phone'] = {
-		label = 'Phone',
-		weight = 190,
-		stack = false,
-		consume = 0,
-		client = {
-			add = function(total)
-				if total > 0 then
-					pcall(function() return exports.npwd:setPhoneDisabled(false) end)
-				end
-			end,
+    ['coke_pochon'] = {
+        label = 'Cocaïne',
+        weight = 100,
+        description = 'Pochon de cocaine (100g)'
+    },
 
-			remove = function(total)
-				if total < 1 then
-					pcall(function() return exports.npwd:setPhoneDisabled(true) end)
-				end
-			end
-		}
-	},
+    ['weed_plant'] = {label = 'Feuille de weed', weight = 15},
 
-	['money'] = {
-		label = 'Money',
-	},
+    ['weed_pochon'] = {
+        label = 'Weed',
+        weight = 100,
+        description = 'Pochon de weed (100g)'
+    },
 
-	['mustard'] = {
-		label = 'Mustard',
-		weight = 500,
-		client = {
-			status = { hunger = 25000, thirst = 25000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `prop_food_mustard`, pos = vec3(0.01, 0.0, -0.07), rot = vec3(1.0, 1.0, -1.5) },
-			usetime = 2500,
-			notification = 'You.. drank mustard'
-		}
-	},
+    ['pochonvide'] = {label = 'Pochon vide', weight = 10},
 
-	['water'] = {
-		label = 'Water',
-		weight = 500,
-		client = {
-			status = { thirst = 200000 },
-			anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-			prop = { model = `prop_ld_flow_bottle`, pos = vec3(0.03, 0.03, 0.02), rot = vec3(0.0, 0.0, -1.5) },
-			usetime = 2500,
-			cancel = true,
-			notification = 'You drank some refreshing water'
-		}
-	},
+    ['ciseau'] = {label = 'Ciseau', weight = 10},
 
-	['radio'] = {
-		label = 'Radio',
-		weight = 1000,
-		stack = false,
-		allowArmed = true
-	},
+    ['burger'] = {
+        label = 'Burger',
+        weight = 220,
+        client = {
+            status = {hunger = 20000},
+            anim = 'eating',
+            prop = 'burger',
+            usetime = 2500,
+            notification = 'Vous avez mangé un délicieux burger'
+        }
+    },
 
-	['armour'] = {
-		label = 'Bulletproof Vest',
-		weight = 3000,
-		stack = false,
-		client = {
-			anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
-			usetime = 3500
-		}
-	},
+    ['candy'] = {
+        label = 'BonBon',
+        weight = 20,
+        client = {
+            status = {hunger = 10000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = ng_proc_candy01a,
+                pos = vec3(0.01, 0.01, 0.00),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500,
+            notification = 'Vous avez mangé des bonbon'
+        }
+    },
 
-	['clothing'] = {
-		label = 'Clothing',
-		consume = 0,
-	},
+    ['chipscheese'] = {
+        label = 'Chips au fromage',
+        weight = 20,
+        client = {
+            status = {hunger = 10000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = v_ret_ml_chips4,
+                pos = vec3(0.01, 0.01, 0.00),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
 
-	['mastercard'] = {
-		label = 'Mastercard',
-		stack = false,
-		weight = 10,
-	},
+    ['chipsribs'] = {
+        label = 'Chips BBq',
+        weight = 20,
+        client = {
+            status = {hunger = 10000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = v_ret_ml_chips1,
+                pos = vec3(0.01, 0.01, 0.00),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
 
-	['scrapmetal'] = {
-		label = 'Scrap Metal',
-		weight = 80,
-	},
+    ['chipssalt'] = {
+        label = 'Chips',
+        weight = 20,
+        client = {
+            status = {hunger = 10000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = v_ret_ml_chips3,
+                pos = vec3(0.01, 0.01, 0.00),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['chipshabanero'] = {
+        label = 'Chips Tortilla',
+        weight = 20,
+        client = {
+            status = {hunger = 10000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = v_ret_ml_chips4,
+                pos = vec3(0.01, 0.01, 0.00),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['bfrites'] = {
+        label = 'Barquette de frites',
+        weight = 20,
+        client = {
+            status = {hunger = 21000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = v_ret_ml_chips4,
+                pos = vec3(0.01, 0.01, 0.00),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['ramenpoulet'] = {
+        label = 'Ramen au poulet',
+        weight = 20,
+        client = {
+            status = {hunger = 25000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_food_cb_juice02,
+                pos = vec3(0.01, 0.01, 0.00),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['ramenpoulet'] = {
+        label = 'Ramen au poulet',
+        weight = 20,
+        client = {
+            status = {hunger = 25000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_food_cb_juice02,
+                pos = vec3(0.01, 0.01, 0.00),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['sandwichpoulet'] = {
+        label = 'Sandwich au poulet',
+        weight = 250,
+        client = {
+            status = {hunger = 25500},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_food_cb_juice02,
+                pos = vec3(0.01, 0.01, 0.00),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['maxiburger'] = {
+        label = 'Maxi Burger',
+        weight = 250,
+        client = {
+            status = {hunger = 35500},
+            anim = 'eating',
+            prop = 'burger',
+            usetime = 2500
+        }
+    },
+
+    ['bsburger'] = {
+        label = 'BS Burger',
+        weight = 250,
+        client = {
+            status = {hunger = 65500},
+            anim = 'eating',
+            prop = 'burger',
+            usetime = 2500
+        }
+    },
+
+    ['chickenburger'] = {
+        label = 'Chicken Burger',
+        weight = 250,
+        client = {
+            status = {hunger = 26500},
+            anim = 'eating',
+            prop = 'burger',
+            usetime = 2500
+        }
+    },
+
+    ['bswrap'] = {
+        label = 'BS Wrap',
+        weight = 250,
+        client = {
+            status = {hunger = 29500},
+            anim = 'eating',
+            prop = 'burger',
+            usetime = 2500
+        }
+    },
+
+    ['bsnuggets'] = {
+        label = 'BS Nuggets',
+        weight = 250,
+        client = {
+            status = {hunger = 29500},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_food_bs_juice01,
+                pos = vec3(0.01, 0.01, 0.00),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['bsrings'] = {
+        label = 'BS Rings',
+        weight = 250,
+        client = {
+            status = {hunger = 21500},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_food_bs_juice01,
+                pos = vec3(0.01, 0.01, 0.00),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['bsfrites'] = {
+        label = 'BS Frites',
+        weight = 250,
+        client = {
+            status = {hunger = 21500},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_food_bs_juice01,
+                pos = vec3(0.01, 0.01, 0.00),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['cola'] = {
+        label = 'Coca-Cola',
+        weight = 350,
+        client = {
+            status = {thirst = 150000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_ecola_can,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500,
+            notification = 'Coca bien frais chacal'
+        }
+    },
+
+    ['coffeecup'] = {
+        label = 'Café',
+        weight = 350,
+        client = {
+            status = {thirst = 200000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = p_ing_coffeecup_01,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['cafelait'] = {
+        label = 'Café au lait',
+        weight = 350,
+        client = {
+            status = {thirst = 250000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = p_ing_coffeecup_01,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['granita'] = {
+        label = 'Granita',
+        weight = 350,
+        client = {
+            status = {thirst = 255000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = p_ing_coffeecup_01,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['gcoffee'] = {label = 'Graine de café', weight = 50},
+
+    ['pouletcru'] = {label = 'Poulet cru', weight = 50},
+
+    ['riz'] = {label = 'Riz', weight = 50},
+
+    ['saumon'] = {label = 'Saumon', weight = 50},
+
+    ['boitederamen'] = {label = 'Boite de Ramen', weight = 50},
+
+    ['parachute'] = {
+        label = 'Parachute',
+        weight = 8000,
+        stack = false,
+        client = {
+            anim = {dict = 'clothingshirt', clip = 'try_shirt_positive_d'},
+            usetime = 1500
+        }
+    },
+
+    ['garbage'] = {label = 'Déchets'},
+
+    ['plastique'] = {
+        label = 'Filament souple',
+        description = 'Filament plastique, utile pour les imprimantes 3D'
+    },
+
+    ['schemacouteau'] = {
+        label = 'Clé USB',
+        description = 'USB contenant un schéma pour couteau en 3D'
+    },
+
+    ['schemapistolettrasher'] = {
+        label = 'Clé USB',
+        description = 'USB contenant un schéma pour pistolet TRASHER en 3D'
+    },
+
+    ['circuitelec'] = {
+        label = 'Circuit électronique',
+        description = 'Circuit électronique peut servir pour différents objets.'
+    },
+
+    ['paperbag'] = {
+        label = 'Sac en papier',
+        weight = 1,
+        stack = false,
+        close = false,
+        consume = 0
+    },
+
+    ['pizzabox'] = {
+        label = 'Boîte à pizza',
+        description = 'Pour garder une pizza en bon état.',
+        weight = 100,
+        stack = false,
+        close = false,
+        consume = 0
+    },
+
+    ['panties'] = {
+        label = 'Culotte',
+        weight = 10,
+        consume = 0,
+        client = {notification = 't\'es serieux la ?'}
+    },
+
+    ['lockpick'] = {
+        label = 'Kit de Crochetage',
+        weight = 160,
+        consume = 0,
+        client = {
+            anim = {
+                dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
+                clip = 'machinic_loop_mechandplayer'
+            },
+            disable = {move = true, car = true, combat = true},
+            usetime = 5000,
+            cancel = true
+        }
+    },
+
+    ['phone'] = {
+        label = 'Téléphone',
+        weight = 190,
+        stack = false,
+        consume = 0,
+        client = {
+            add = function(total)
+                if total > 0 then
+                    pcall(function()
+                        return exports.npwd:setPhoneDisabled(false)
+                    end)
+                end
+            end,
+
+            remove = function(total)
+                if total < 1 then
+                    pcall(function()
+                        return exports.npwd:setPhoneDisabled(true)
+                    end)
+                end
+            end
+        }
+    },
+
+    ['money'] = {label = 'Argent'},
+
+
+    ['mustard'] = {
+        label = 'Moutarde',
+        weight = 500,
+        client = {
+            status = {hunger = 25000, thirst = -55000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_food_mustard,
+                pos = vec3(0.01, 0.0, -0.07),
+                rot = vec3(1.0, 1.0, -1.5)
+            },
+            usetime = 2500,
+            notification = 'Aie ça pique'
+        }
+    },
+
+    ['water'] = {
+        label = 'bouteille d\'eau',
+        weight = 500,
+        client = {
+            status = {thirst = 200000, drunk = -10000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_ld_flow_bottle,
+                pos = vec3(0.03, 0.03, 0.02),
+                rot = vec3(0.0, 0.0, -1.5)
+            },
+            usetime = 2500,
+            cancel = true,
+            notification = 'Tu as bu de l\'eau rafraîchissante'
+        }
+
+    },
+
+    ['armur'] = {
+        label = 'Gilet pare-balles',
+        weight = 3000,
+        stack = false,
+        client = {
+            anim = {dict = 'clothingshirt', clip = 'try_shirt_positive_d'},
+            usetime = 3500
+        }
+    },
+
+    ['masque'] = {
+        label = 'Masque à gaz',
+        weight = 100,
+        stack = false,
+        close = true,
+        consume = 0,
+        description = 'Masque à gaz bas de gamme',
+        degrade = 60,
+        client = {
+            anim = {dict = 'mp_masks@on_foot', clip = 'put_on_mask'},
+            usetime = 1000,
+            remove = function(total)
+                if total < 1 then
+                    SetPedComponentVariation(PlayerPedId(), 1, 0, 0, 0)
+                end
+            end
+        }
+    },
+
+    ['carkey'] = {
+        label = 'Clé véhicule',
+        weight = 100,
+        stack = false,
+        consume = 0
+
+    },
+
+    ['key'] = {label = 'Clé', weight = 100, stack = false, consume = 0},
+
+    ['camera'] = {
+        label = 'Appareil photo',
+        weight = 900,
+        close = true,
+        stack = false,
+        consume = 0
+    },
+
+    ['photo'] = {
+        label = 'Photo',
+        weight = 70,
+        close = true,
+        stack = false,
+        consume = 0
+    },
+
+    ['ticketparking'] = {
+        label = 'Ticket de Parking',
+        weight = 70,
+        close = true,
+        stack = false,
+        consume = 0
+    },
+
+    ['roller'] = {
+        label = 'Roller',
+        weight = 1000,
+        close = true,
+        stack = true,
+        consume = 0,
+        client = {notification = '/enlever pour enlever les roller'}
+    },
+
+    ['radio'] = {
+        label = 'Radio',
+        weight = 100,
+        stack = true,
+        close = true,
+        client = {
+            export = 'ac_radio.openRadio',
+            remove = function(total)
+                -- Disconnets a player from the radio when all his radio items are removed.
+                if total < 1 and GetConvar('radio_noRadioDisconnect', 'true') ==
+                    'true' then exports.ac_radio:leaveRadio() end
+            end
+        }
+    },
+
+    ['sacpoubelle'] = {
+        label = 'Sac poubelle',
+        weight = 10000,
+        stack = false,
+        description = 'en dev'
+
+    },
+
+    ['id_card'] = {
+        label = 'Carte d\'identité',
+        weight = 0,
+        stack = false,
+        close = true,
+        description = "Une carte d'identité appartenant à quelqu'un"
+
+    },
+    ['driver_license'] = {
+        label = 'Drivers License',
+        weight = 0,
+        stack = false,
+        close = true,
+        description = "Your Description"
+
+    },
+    ['farmlicense'] = {
+        label = 'Permis de chasse',
+        weight = 0,
+        stack = false,
+        close = true,
+        description = "Idéal pour la chasse"
+
+    },
+    ['lawyerpass'] = {
+        label = 'Lawyer Pass',
+        weight = 0,
+        stack = false,
+        close = true,
+        description = "Your Description"
+
+    },
+
+    ['cartegrise'] = {label = 'Carte grise', stack = false},
+
+    ['citron'] = {label = 'Citron', weight = 30},
+
+    ['fruitsmelange'] = {label = 'Mélange de fruits', weight = 50},
+
+    ['banane'] = {label = 'Banane', weight = 20},
+
+    ['ice'] = {label = 'Glacon', weight = 20},
+
+    ['apple'] = {label = 'Pomme', weight = 20},
+
+    ['orange'] = {label = 'Orange', weight = 20},
+
+    ['caisseorange'] = {label = 'Caisse d\'orange', weight = 2500},
+
+    ['fraise'] = {label = 'Fraise', weight = 10},
+
+    ['menthe'] = {label = 'Menthe', weight = 5},
+
+    ['coconut'] = {label = 'Noix de Coco', weight = 100},
+
+    ['lait'] = {
+        label = 'Bouteille de lait',
+        weight = 300,
+        client = {
+            status = {thirst = 4000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = v_res_tt_milk,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['smoothiebanane'] = {
+        label = 'Smoothie Banane',
+        weight = 30,
+        client = {
+            status = {thirst = 35000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = p_ing_coffeecup_01,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['smoothiefraise'] = {
+        label = 'Smoothie Fraise',
+        weight = 30,
+        client = {
+            status = {thirst = 39000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = p_ing_coffeecup_01,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['smoothiefruits'] = {
+        label = 'Smoothie Fruits',
+        weight = 30,
+        client = {
+            status = {thirst = 35000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = p_ing_coffeecup_01,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['nutella'] = {label = 'Nutella 250g', weight = 250},
+
+    ['bread'] = {
+        label = 'Pain',
+        weight = 10,
+        client = {
+            status = {hunger = 20000},
+            anim = {
+                dict = 'mp_player_inteat@burger',
+                clip = 'mp_player_int_eat_burger'
+            },
+            prop = {
+                model = prop_sandwich_01,
+                pos = vec3(0.01, 0.01, 0.0),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['pizzam'] = {
+        label = 'Pizza Margherita',
+        weight = 10,
+        client = {
+            status = {hunger = 420000},
+            anim = {
+                dict = 'mp_player_inteat@burger',
+                clip = 'mp_player_int_eat_burger'
+            },
+            prop = {
+                model = prop_sandwich_01,
+                pos = vec3(0.01, 0.01, 0.0),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['sushi'] = {
+        label = 'Sushi',
+        weight = 10,
+        client = {
+            status = {hunger = 420000},
+            anim = {
+                dict = 'mp_player_inteat@burger',
+                clip = 'mp_player_int_eat_burger'
+            },
+            prop = {
+                model = prop_sandwich_01,
+                pos = vec3(0.01, 0.01, 0.0),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['spaghettis'] = {
+        label = 'Spaghettis Bolognaise',
+        weight = 30,
+        description = 'Plat italien',
+        client = {
+            status = {hunger = 51000},
+            anim = {
+                dict = 'mp_player_inteat@burger',
+                clip = 'mp_player_int_eat_burger'
+            },
+            prop = {
+                model = prop_sandwich_01,
+                pos = vec3(0.01, 0.01, 0.0),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['focaccia'] = {
+        label = 'Focaccia',
+        weight = 30,
+        description = 'Plat italien',
+        client = {
+            status = {hunger = 51000},
+            anim = {
+                dict = 'mp_player_inteat@burger',
+                clip = 'mp_player_int_eat_burger'
+            },
+            prop = {
+                model = prop_sandwich_01,
+                pos = vec3(0.01, 0.01, 0.0),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['tomate'] = {label = 'Tomate', weight = 10, description = 'Ingredient'},
+
+    ['farine'] = {label = 'Farine', weight = 950, description = 'Ingredient'},
+
+    ['pates'] = {label = 'Pâtes', weight = 10, description = 'Ingredient'},
+
+    ['viandeh'] = {
+        label = 'Viande hachée',
+        weight = 10,
+        description = 'Ingredient'
+    },
+
+    ['patepizza'] = {
+        label = 'Pâte À Pizza',
+        weight = 10,
+        description = 'Ingredient'
+    },
+
+    ['fromage'] = {label = 'Fromage', weight = 10, description = 'Ingredient'},
+
+    ['tartinenutella'] = {
+        label = 'Tartine nutella',
+        weight = 20,
+        client = {
+            status = {hunger = 26000},
+            anim = {
+                dict = 'mp_player_inteat@burger',
+                clip = 'mp_player_int_eat_burger'
+            },
+            prop = {
+                model = v_res_fa_bread03,
+                pos = vec3(0.01, 0.01, 0.0),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['pile'] = {label = 'Pile', weight = 10},
+
+    ['jumelles'] = {
+        label = 'Jumelles',
+        weight = 100,
+        stack = false,
+        close = true
+    },
+
+    ['ampoule'] = {label = 'Ampoule', weight = 10},
+
+    ['morceaudebois'] = {label = 'Morceaux de bois', weight = 150},
+
+    ['roue'] = {label = 'Roue bmx', weight = 360},
+
+    ['pedales'] = {label = 'Pédales bmx', weight = 60},
+
+    ['guidon'] = {label = 'Guidon bmx', weight = 600},
+
+    ['bmx'] = {
+        label = 'Bmx',
+        weight = 2000,
+        client = {
+            anim = {dict = 'mini@repair', clip = 'fixing_a_ped'},
+            usetime = 2500
+        }
+    },
+
+    ['doliprane'] = {
+        label = 'Doliprane',
+        description = 'Efficace pour certaines maladies.',
+        weight = 6,
+        client = {anim = {dict = 'mp_suicide', clip = 'pill'}, usetime = 2500}
+    },
+
+    ['ferraille'] = {label = 'Ferraille', weight = 1500, description = 'Outil'},
+
+    ['acier'] = {label = 'Acier', weight = 2500},
+
+    ['acierrenforce'] = {label = 'Acier renforcé', weight = 4500},
+
+    ['canonpompe'] = {
+        label = 'Canon scié',
+        description = 'Peut être monter sur une crosse',
+        weight = 1500
+    },
+
+    ['crossepompe'] = {
+        label = 'Crosse en bois',
+        description = 'Peut être monter sur un canon scié',
+        weight = 1900
+    },
+
+    ['cables'] = {label = 'Cables', weight = 1000, description = 'Outil'},
+
+    ['tissu'] = {
+        label = 'Tissu',
+        weight = 100,
+        description = 'Peut servir pour fabriquer des vêtements'
+    },
+
+    ['fish'] = {
+        label = 'Poisson',
+        weight = 50,
+        description = 'Peut être revendu'
+    },
+
+    ['canneapeche'] = {label = 'Canne à pêche', weight = 50},
+
+    ['tshirt'] = {
+        label = 'T-shirt',
+        weight = 100,
+        description = 'Peut être revendu'
+    },
+
+    ['eponge'] = {label = 'Éponge', weight = 10},
+
+    ['lavevitre'] = {label = 'Lave vitre', weight = 1000},
+
+    ['boiteoutils'] = {
+        label = 'Ensembles d\'outils',
+        weight = 1000,
+        description = 'Outil'
+    },
+
+    ['kitmoteur'] = {
+        label = 'kit de réparation moteur',
+        description = 'kit de réparation pour mouteur',
+        weight = 1000,
+        client = {
+            anim = {
+                dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
+                clip = 'machinic_loop_mechandplayer'
+            },
+            usetime = 5500
+        }
+    },
+
+    ['kitnet'] = {
+        label = 'kit de nettoyage',
+        description = 'kit de nettoyage pour voiture',
+        weight = 500,
+        client = {
+            anim = {dict = 'amb@world_human_maid_clean@', clip = 'base'},
+            usetime = 6900
+        }
+    },
+
+    ['kitcaro'] = {
+        label = 'kit de réparation carrosserie',
+        description = 'kit de réparation pour carrosserie',
+        weight = 1000,
+        client = {
+            anim = {
+                dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
+                clip = 'machinic_loop_mechandplayer'
+            },
+            usetime = 5500
+        }
+    },
+
+    ['oxygenmask'] = {
+        label = 'Masque oxygene',
+        description = 'en dev',
+        weight = 1000,
+        consume = 0,
+        stack = false,
+        degrade = 60
+
+    },
+
+    -- Alcool
+    ['vodka'] = {
+        label = 'Absolut Vodka',
+        weight = 100,
+        description = 'Bouteille d\'un litre'
+    },
+
+    ['vin'] = {
+        label = 'Vin Rouge',
+        weight = 100,
+        description = 'Bouteille d\'un litre'
+    },
+
+    ['cognac'] = {
+        label = 'Cognac',
+        weight = 100,
+        description = 'Bouteille d\'un litre'
+    },
+
+    ['champagne'] = {
+        label = 'Champagne',
+        weight = 100,
+        description = 'Bouteille d\'un litre'
+    },
+
+    ['verrevide'] = {
+        label = 'Verre vide',
+        weight = 100,
+        description = 'Verre destiné à de l\'alcool'
+    },
+
+    ['beer'] = {
+        label = 'Bière',
+        weight = 10,
+        client = {
+            status = {drunk = 20000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_amb_beer_bottle,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['verrevin'] = {
+        label = 'Verre de Vin',
+        weight = 10,
+        client = {
+            status = {drunk = 30000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = p_wine_glass_s,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['verrecognac'] = {
+        label = 'Verre de Cognac',
+        weight = 10,
+        client = {
+            status = {drunk = 35000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_drink_whisky,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['verrechampagne'] = {
+        label = 'Verre de Champagne',
+        weight = 10,
+        client = {
+            status = {drunk = 35000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_cs_champ_flute,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['verrevodka'] = {
+        label = 'Verre de Vodka',
+        weight = 10,
+        client = {
+            status = {drunk = 45000},
+            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            prop = {
+                model = prop_drink_whisky,
+                pos = vec3(0.01, 0.01, 0.06),
+                rot = vec3(5.0, 5.0, -180.5)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['handcuffs'] = {
+        label = 'Menottes',
+        weight = 10,
+        stack = false,
+        consume = 0
+    },
+
+    ['rope'] = {label = 'Corde', weight = 10, stack = false, consume = 0},
+
+    ['leather'] = {
+        label = 'Peau d\'animeaux',
+        weight = 5000,
+        stack = false,
+        close = false,
+        consume = 0
+    },
+
+    ['meat'] = {
+        label = 'Viande',
+        weight = 1000,
+        stack = true,
+        close = false,
+        consume = 0
+    },
+
+    ['a_c_deer_horns'] = {
+        label = 'cornes de cerf',
+        weight = 2500,
+        stack = true,
+        close = false,
+        consume = 0
+    },
+
+    ['oxygenmask'] = {
+        label = 'Masque oxygene',
+        weight = 2500,
+        stack = false,
+        close = true,
+        client = {
+            anim = {dict = 'missmic4', clip = 'michael_tux_fidget'},
+            usetime = 1000
+        }
+
+    },
+
+    ['backpack'] = {
+        label = 'Sac à dos',
+        weight = 10000,
+        stack = false,
+        consume = 0,
+        client = {
+            add = function(total)
+                if total > 0 then
+                    local hash = p_michael_backpack_s
+                    local ped = cache.ped
+                    local x, y, z = table.unpack(
+                                        GetOffsetFromEntityInWorldCoords(ped,
+                                                                         0.0,
+                                                                         3.0,
+                                                                         0.5))
+                    lib.requestModel(hash, 100)
+                    bagObj = CreateObjectNoOffset(hash, x, y, z, true, false)
+                    AttachEntityToEntity(bagObj, ped,
+                                         GetPedBoneIndex(ped, 24818), 0.07,
+                                         -0.11, -0.05, 0.0, 90.0, 175.0, true,
+                                         true, false, true, 1, true)
+                end
+            end,
+            remove = function(total)
+                if total < 1 then
+                    if DoesEntityExist(bagObj) then
+                        DeleteObject(bagObj)
+                    end
+                    SetModelAsNoLongerNeeded(hash)
+                    bagObj = nil
+                end
+            end
+        }
+
+    },
+
+
 }
