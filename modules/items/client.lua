@@ -73,101 +73,204 @@ local ox_inventory = exports[shared.resource]
 -----------------------------------------------------------------------------------------------
 
 Item('bandage', function(data, slot)
-	local maxHealth = GetEntityMaxHealth(cache.ped)
-	local health = GetEntityHealth(cache.ped)
-	ox_inventory:useItem(data, function(data)
-		if data then
-			SetEntityHealth(cache.ped, math.min(maxHealth, math.floor(health + maxHealth / 16)))
-			lib.notify({ description = 'You feel better already' })
-		end
-	end)
+    local maxHealth = GetEntityMaxHealth(cache.ped)
+    local health = GetEntityHealth(cache.ped)
+    ox_inventory:useItem(data, function(data)
+        if data then
+            SetEntityHealth(cache.ped, math.min(maxHealth, math.floor(
+                                                    health + maxHealth / 16)))
+            lib.notify({description = 'You feel better already'})
+        end
+    end)
 end)
 
 Item('armour', function(data, slot)
-	if GetPedArmour(cache.ped) < 100 then
-		ox_inventory:useItem(data, function(data)
-			if data then
-				SetPlayerMaxArmour(PlayerData.id, 100)
-				SetPedArmour(cache.ped, 100)
-			end
-		end)
-	end
+    if GetPedArmour(cache.ped) < 100 then
+        ox_inventory:useItem(data, function(data)
+            if data then
+                SetPlayerMaxArmour(PlayerData.id, 100)
+                SetPedArmour(cache.ped, 100)
+            end
+        end)
+    end
 end)
 
 client.parachute = false
 Item('parachute', function(data, slot)
-	if not client.parachute then
-		ox_inventory:useItem(data, function(data)
-			if data then
-				local chute = `GADGET_PARACHUTE`
-				SetPlayerParachuteTintIndex(PlayerData.id, -1)
-				GiveWeaponToPed(cache.ped, chute, 0, true, false)
-				SetPedGadget(cache.ped, chute, true)
-				lib.requestModel(1269906701)
-				client.parachute = CreateParachuteBagObject(cache.ped, true, true)
-				if slot.metadata.type then
-					SetPlayerParachuteTintIndex(PlayerData.id, slot.metadata.type)
-				end
-			end
-		end)
-	end
+    if not client.parachute then
+        ox_inventory:useItem(data, function(data)
+            if data then
+                local chute = GADGET_PARACHUTE
+                SetPlayerParachuteTintIndex(PlayerData.id, -1)
+                GiveWeaponToPed(cache.ped, chute, 0, true, false)
+                SetPedGadget(cache.ped, chute, true)
+                lib.requestModel(1269906701)
+                client.parachute = CreateParachuteBagObject(cache.ped, true,
+                                                            true)
+                if slot.metadata.type then
+                    SetPlayerParachuteTintIndex(PlayerData.id,
+                                                slot.metadata.type)
+                end
+            end
+        end)
+    end
 end)
 
 Item('phone', function(data, slot)
-	local success, result = pcall(function()
-		return exports.npwd:isPhoneVisible()
-	end)
+    local success, result = pcall(function()
+        return exports.npwd:isPhoneVisible()
+    end)
 
-	if success then
-		exports.npwd:setPhoneVisible(not result)
-	end
+    if success then exports.npwd:setPhoneVisible(not result) end
+end)
+-- svutrne edite
+Item('masque', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then
+            SetPedComponentVariation(PlayerPedId(), 1, 175, 0, 2)
+            lib.notify({description = 'Prêt à affronter les RedZones'})
+        end
+    end)
 end)
 
-Item('clothing', function(data, slot)
-	local metadata = slot.metadata
+Item('carkey', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then TriggerEvent('ff_carkey:send', data) end
+    end)
+end)
 
-	if not metadata.drawable then return print('Clothing is missing drawable in metadata') end
-	if not metadata.texture then return print('Clothing is missing texture in metadata') end
+Item('photo', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then
+            TriggerEvent('LF_camera:client:use-photo', slot.metadata.photourl)
+        end
+    end)
+end)
 
-	if metadata.prop then
-		if not SetPedPreloadPropData(cache.ped, metadata.prop, metadata.drawable, metadata.texture) then
-			return print('Clothing has invalid prop for this ped')
-		end
-	elseif metadata.component then
-		if not IsPedComponentVariationValid(cache.ped, metadata.component, metadata.drawable, metadata.texture) then
-			return print('Clothing has invalid component for this ped')
-		end
-	else
-		return print('Clothing is missing prop/component id in metadata')
-	end
+Item('roller', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then TriggerEvent('LF_roller:client:useroller') end
+    end)
+end)
 
-	ox_inventory:useItem(data, function(data)
-		if data then
-			metadata = data.metadata
+Item('bmx', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then
+            local x, y, z = table.unpack(
+                                GetOffsetFromEntityInWorldCoords(PlayerPedId(),
+                                                                 0.0, 1.0, 0.5))
+            local veh = 'bmx'
+            if veh == nil then veh = "cruiser" end
+            vehiclehash = GetHashKey(veh)
+            RequestModel(vehiclehash)
+            Citizen.CreateThread(function()
+                local waiting = 0
+                while not HasModelLoaded(vehiclehash) do
+                    waiting = waiting + 100
+                    Citizen.Wait(100)
+                    if waiting > 5000 then
+                        ShowNotification("~r~bug item bmx.")
+                        break
+                    end
+                end
+                CreateVehicle(vehiclehash, x, y, z,
+                              GetEntityHeading(PlayerPedId()) + 90, 1, 0)
+            end)
+        end
+    end)
+end)
 
-			if metadata.prop then
-				local prop = GetPedPropIndex(cache.ped, metadata.prop)
-				local texture = GetPedPropTextureIndex(cache.ped, metadata.prop)
+Item('doliprane', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then
+            TriggerEvent("esx_doencas:getHealedComp", PlayerPedId())
+            TriggerEvent('esx_status:add', 'maladie', 250000)
+        end
+    end)
+end)
 
-				if metadata.drawable == prop and metadata.texture == texture then
-					return ClearPedProp(cache.ped, metadata.prop)
-				end
+Item('radio', function(data, slot)
+    if data then TriggerEvent('tgiann-radio:use', PlayerPedId()) end
+end)
 
-				-- { prop = 0, drawable = 2, texture = 1 } = grey beanie
-				SetPedPropIndex(cache.ped, metadata.prop, metadata.drawable, metadata.texture, false);
-			elseif metadata.component then
-				local drawable = GetPedDrawableVariation(cache.ped, metadata.component)
-				local texture = GetPedTextureVariation(cache.ped, metadata.component)
+Item('jumelles', function(data, slot)
+    if data then TriggerEvent('jumelles:Active', PlayerPedId()) end
+end)
 
-				if metadata.drawable == drawable and metadata.texture == texture then
-					return -- item matches (setup defaults so we can strip?)
-				end
 
-				-- { component = 4, drawable = 4, texture = 1 } = jeans w/ belt
-				SetPedComponentVariation(cache.ped, metadata.component, metadata.drawable, metadata.texture, 0);
-			end
-		end
-	end)
+
+Item('kitmoteur', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then
+            local veh = GetClosestVehicle(GetEntityCoords(PlayerPedId()), 15.0,
+                                          0, 70)
+            NetworkRequestControlOfEntity(veh)
+            while not NetworkHasControlOfEntity(veh) do Wait(1) end
+            SetVehicleEngineHealth(veh, 1000.0)
+            SetVehicleDoorShut(veh, 4, false, false)
+        end
+    end)
+end)
+
+Item('kitcaro', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then
+            local veh = GetClosestVehicle(GetEntityCoords(PlayerPedId()), 15.0,
+                                          0, 70)
+            NetworkRequestControlOfEntity(veh)
+            while not NetworkHasControlOfEntity(veh) do Wait(1) end
+            SetVehicleFixed(veh)
+            SetVehicleDeformationFixed(veh)
+        end
+    end)
+end)
+
+Item('kitnet', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then
+            local veh = GetClosestVehicle(GetEntityCoords(PlayerPedId()), 15.0,
+                                          0, 70)
+            NetworkRequestControlOfEntity(veh)
+            while not NetworkHasControlOfEntity(veh) do Wait(1) end
+            SetVehicleDirtLevel(veh, 00.0)
+        end
+    end)
+end)
+
+Item('torch', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then ExecuteCommand('e ftorch') end
+    end)
+end)
+
+Item('oxygenmask', function(data, slot)
+    local usingOxygenMask = false
+    ox_inventory:useItem(data, function(data)
+        if data then
+            SetPedComponentVariation(PlayerPedId(), 1, 175, 0, 2)
+            SetPedComponentVariation(PlayerPedId(), 8, 123, 0, 0)
+            usingOxygenMask = true
+
+            lib.notify({description = 'Capacité de la bouteille 100%'})
+
+            Wait(1500)
+            lib.notify({description = 'Capacité de la bouteille 75%'})
+
+            Wait(2500)
+            lib.notify({description = 'Capacité de la bouteille 50%'})
+
+            Wait(3000)
+            lib.notify({description = 'Capacité de la bouteille 25%'})
+
+            Wait(5000)
+            lib.notify({description = 'Capacité de la bouteille 0%'})
+
+            usingOxygenMask = false
+            ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
+                TriggerEvent('skinchanger:loadSkin', skin)
+            end)
+        end
+    end)
 end)
 
 -----------------------------------------------------------------------------------------------
