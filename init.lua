@@ -61,6 +61,15 @@ if IsDuplicityVersion() then
 				["burger", 1, 1]
 			]
 		]])),
+        zombieloot = json.decode(GetConvar('inventory:zombieloot', [[
+			[
+				["garbage", 1, 3],
+				["money", 1, 10],
+				["burger", 1, 1],
+				["garbage", 1, 1],
+				["WEAPON_BALL", 1, 1]
+			]
+		]])),
     }
 
     local accounts = json.decode(GetConvar('inventory:accounts', '["money"]'))
