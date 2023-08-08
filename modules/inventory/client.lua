@@ -3,7 +3,7 @@ if not lib then return end
 local Inventory = {}
 
 Inventory.Dumpsters = {218085040, 666561306, -58485588, -206690185, 1511880420, 682791951}
-
+Inventory.chariot = {1036195894, 1918323043, -230045366}
 function Inventory.OpenDumpster(entity)
 	local netId = NetworkGetEntityIsNetworked(entity) and NetworkGetNetworkIdFromEntity(entity)
 
@@ -14,7 +14,24 @@ function Inventory.OpenDumpster(entity)
 	end
 
 	if netId then
-		client.openInventory('dumpster', 'dumpster'..netId)
+		if lib.progressCircle({
+			duration = 5000,
+			position = 'middle',
+			useWhileDead = false,
+			canCancel = true,
+			disable = {
+				car = true,
+			},
+			anim = {
+				dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
+				clip = 'machinic_loop_mechandplayer'
+			},
+			
+		}) then client.openInventory('dumpster', 'dumpster'..netId) else lib.notify({
+			title = 'Action',
+			description = 'Vous avez annulé votre action',
+			type = 'success'
+		}) end
 	end
 end
 
@@ -24,6 +41,18 @@ if shared.target then
 			{
 				icon = 'fas fa-dumpster',
 				label = locale('search_dumpster'),
+				action = function(entity)
+					Inventory.OpenDumpster(entity)
+				end
+			},
+		},
+		distance = 2
+	})
+	exports.qtarget:AddTargetModel(Inventory.chariot, {
+		options = {
+			{
+				icon = 'fas fa-hand',
+				label = 'fouiller le chariot',
 				action = function(entity)
 					Inventory.OpenDumpster(entity)
 				end
@@ -350,5 +379,124 @@ RegisterNetEvent('ox_inventory:refreshMaxWeight', function(data)
 		}
 	})
 end)
+
+local function OpenZombie(entity)
+	local netId = NetworkGetEntityIsNetworked(entity) and NetworkGetNetworkIdFromEntity(entity)
+	if not netId then
+		NetworkRegisterEntityAsNetworked(entity)
+		SetEntityAsMissionEntity(entity)
+		netId = NetworkGetNetworkIdFromEntity(entity)
+		NetworkUseHighPrecisionBlending(netId, false)
+		SetNetworkIdExistsOnAllMachines(netId, true)
+		SetNetworkIdCanMigrate(netId, true)
+	end
+	if lib.progressCircle({
+		duration = 5000,
+		position = 'middle',
+		useWhileDead = false,
+		canCancel = true,
+		disable = {
+			car = true,
+		},
+		anim = {
+			dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
+			clip = 'machinic_loop_mechandplayer'
+		},
+		
+	}) then client.openInventory('zombie', 'zombie'..netId) else lib.notify({
+		title = 'Action',
+		description = 'Vous avez annulé votre action',
+		type = 'success'
+	}) end
+	
+end
+	
+
+
+local function CorpsZombie(entity)
+	local netId = NetworkGetEntityIsNetworked(entity) and NetworkGetNetworkIdFromEntity(entity)
+	
+	local player = PlayerPedId()
+	if not netId then
+		NetworkRegisterEntityAsNetworked(entity)
+		SetEntityAsMissionEntity(entity)
+		netId = NetworkGetNetworkIdFromEntity(entity)
+		NetworkUseHighPrecisionBlending(netId, false)
+		SetNetworkIdExistsOnAllMachines(netId, true)
+		SetNetworkIdCanMigrate(netId, true)
+	end
+	if lib.progressCircle({
+		duration = 5000,
+		position = 'middle',
+		useWhileDead = false,
+		canCancel = true,
+		disable = {
+			car = true,
+		},
+		anim = {
+			dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
+			clip = 'machinic_loop_mechandplayer'
+		},
+		
+	}) then TriggerServerEvent("Lastlife:givezombie", player)
+		DeleteEntity(entity) else lib.notify({
+		title = 'Action',
+		description = 'Vous avez annulé votre action',
+		type = 'success'
+	}) end
+	
+end
+	
+
+
+Inventory.zombie = {
+"u_m_m_prolsec_01",
+"a_m_m_hillbilly_01",
+"a_m_m_polynesian_01",
+"a_m_m_skidrow_01",
+"a_m_m_salton_02",
+"a_m_m_fatlatin_01",
+"a_m_m_beach_01",
+"a_m_m_farmer_01",
+"a_m_m_malibu_01",
+"a_m_m_rurmeth_01",
+"a_m_y_salton_01",
+"a_m_m_skater_01",
+"a_m_m_tennis_01",
+"a_m_o_acult_02",
+"a_m_y_genstreet_01",
+"a_m_y_genstreet_02",
+"a_m_y_methhead_01",
+"a_m_y_stlat_01",
+"s_m_m_paramedic_01",
+"s_m_y_cop_01",
+"s_m_y_prismuscl_01",
+"s_m_y_prisoner_01",
+"a_m_m_og_boss_01",
+"a_m_m_eastsa_02",
+"a_f_y_juggalo_01"
+}
+exports.qtarget:AddTargetModel(Inventory.zombie, {
+options = {
+	{
+		icon = "fas fa-hand",
+		label = "Fouiller le zombie",
+		action = function(entity)
+				OpenZombie(entity)
+			end,
+		num = 1
+	},
+	{
+		icon = "fas fa-hand",
+		label = "Ramasser le corps",
+		action = function(entity)
+				CorpsZombie(entity)
+			end,
+		num = 2
+	},
+
+},
+distance = 2
+})
 
 return Inventory
