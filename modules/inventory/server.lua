@@ -701,6 +701,8 @@ local function generateItems(inv, invType, items)
 			items = randomLoot(server.dumpsterloot)
 		elseif invType == 'vehicle' then
 			items = randomLoot(server.vehicleloot)
+		elseif invType == 'zombie' then
+			items = randomLoot(server.zombieloot)
 		end
 	end
 
@@ -736,9 +738,14 @@ function Inventory.Load(id, invType, owner)
 			if server.randomloot then
 				return generateItems(id, invType)
             end
+		elseif invType == 'zombie' then
+			if server.randomloot then
+				return generateItems(id, invType)
+			else
+				datastore = true
+			end
 		elseif invType == 'trunk' or invType == 'glovebox' then
 			result = invType == 'trunk' and db.loadTrunk(id) or db.loadGlovebox(id)
-
 			if not result then
 				if server.randomloot then
 					return generateItems(id, 'vehicle')
@@ -1507,6 +1514,16 @@ local function dropItem(source, playerInventory, fromData, data)
 
 	if server.loglevel > 0 then
 		lib.logger(playerInventory.owner, 'swapSlots', ('%sx %s transferred from "%s" to "%s"'):format(data.count, toData.name, playerInventory.label, dropId))
+		exports.delilogs:createLog({
+			EmbedMessage = 
+			 '**'..GetPlayerName(source)..'** ``à jeter un item``\n'..
+	 '**[Provenance]: **' ..playerInventory.label.. '\n'..
+	 '**[Cible]: **' ..dropId.. ' '..inventory.coords..'\n'..
+	 '**[Item]: ** ``x'..data.count.. " " ..toData.name.. '``\n'..
+	 '**\n[->]** : ||' ..playerInventory.owner.. '||',
+			channel = "Inventaire",
+			screenshot = false
+		})
 	end
 
 	if server.syncInventory then server.syncInventory(playerInventory) end
@@ -1657,6 +1674,16 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 
 						if server.loglevel > 0 then
 							lib.logger(playerInventory.owner, 'swapSlots', ('%sx %s transferred from "%s" to "%s" for %sx %s'):format(fromData.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id, toData.count, toData.name))
+						    exports.delilogs:createLog({
+								EmbedMessage = 
+								'**'..GetPlayerName(source)..'** ``à échanger``\n'..
+								'**[Provenance]: **' ..fromInventory.label.. '\n'..
+								'**[Cible]: **' ..toInventory.label.. '\n'..
+								'**[Item]: ** ``x'..fromData.count.. " " ..fromData.name.. ' avec x' ..toData.count..' '..toData.name..'``\n'..
+								'**\n[->]** : ||' ..playerInventory.owner.. '||',
+									   channel = "Inventaire",
+									   screenshot = false
+								   })
 						end
 					else return false, 'cannot_carry' end
 				else
@@ -1700,6 +1727,16 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 
 						if server.loglevel > 0 then
 							lib.logger(playerInventory.owner, 'swapSlots', ('%sx %s transferred from "%s" to "%s"'):format(data.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id))
+							exports.delilogs:createLog({
+								EmbedMessage = 
+								'**'..GetPlayerName(source)..'** ``à transférer un item``\n'..
+								'**[Provenance]: **' ..fromInventory.label.. '\n'..
+								'**[Cible]: **' ..toInventory.label..'\n'..
+								'**[Item]: ** ``x'..data.count.. " " ..toData.name.. '``\n'..
+								'**\n[->]** : ||' ..GetPlayerName(source).. '||',
+								channel = "Inventaire",
+								screenshot = false
+							 })
 						end
 					end
 
@@ -1750,6 +1787,16 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 
 						if server.loglevel > 0 then
 							lib.logger(playerInventory.owner, 'swapSlots', ('%sx %s transferred from "%s" to "%s"'):format(data.count, fromData.name, fromInventory.owner and fromInventory.label or fromInventory.id, toInventory.owner and toInventory.label or toInventory.id))
+							exports.delilogs:createLog({
+								EmbedMessage = 
+								'**'..GetPlayerName(source)..'** ``à transférer un item``\n'..
+								'**[Provenance]: **' ..fromInventory.label.. '\n'..
+								'**[Cible]: **' ..toInventory.label..'\n'..
+								'**[Item]: ** ``x'..data.count.. " " ..toData.name.. '``\n'..
+								'**\n[->]** : ||' ..GetPlayerName(source).. '||',
+								channel = "Inventaire",
+								screenshot = false
+							 })
 						end
 					end
 
@@ -2334,6 +2381,16 @@ RegisterServerEvent('ox_inventory:giveItem', function(slot, target, count)
 				if Inventory.RemoveItem(fromInventory, item, count, data.metadata, slot) then
 					if server.loglevel > 0 then
 						lib.logger(fromInventory.owner, 'giveItem', ('"%s" gave %sx %s to "%s"'):format(fromInventory.label, count, data.name, toInventory.label))
+						exports.delilogs:createLog({
+							EmbedMessage = 
+							'**'..GetPlayerName(source)..'** ``à donner``\n'..
+							'**[Provenance]: **' ..fromInventory.label.. '\n'..
+							'**[Cible]: **' ..toInventory.label.. '\n'..
+							'**[Item]: ** ``x'..count.. " " ..data.name.. '``\n'..
+							'**[->]: **||' ..toInventory.owner.. '||\n',
+								   channel = "Inventaire",
+								   screenshot = false
+							   })
 					end
 
 					return
