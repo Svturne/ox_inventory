@@ -131,4 +131,44 @@ function Utils.CreateBlip(settings, coords)
 	return blip
 end
 
+function Utils.getMousePlayer(cb)
+    if (isSelectingActive) then return end
+    isSelectingActive = true
+    Citizen.CreateThread(detectClosestPedToMouse)
+    Citizen.CreateThread(function() 
+        SetNuiFocus(false, true)
+        SetCursorLocation(0.5, 0.5)
+        AddTextEntry('billing_ui_select_player', 'Utilisez la souris pour choisir un joueur\n~INPUT_REPLAY_TOGGLE_TIMELINE~ pour annuler')
+        while isSelectingActive do
+            DisplayHelpTextThisFrame('billing_ui_select_player', false)
+            if (closestPed) then
+                local pedCoords = GetPedBoneCoords(closestPed, 24817, 0.0, 0.0, 0.0)
+                DrawMarker(21, pedCoords.x, pedCoords.y, (pedCoords.z + 1.0), 0.0, 0.0, 0.0, 0.0, 180.0, 0.0, 0.3, 0.3, 0.3, 101, 12, 12, 100, true, true, 2, false, nil, nil, false)
+                if IsControlJustReleased(0, 24) then
+                    local targetPlayer = NetworkGetPlayerIndexFromPed(closestPed)
+                    isSelectingActive = false
+					SetNuiFocus(false, false)
+					cb(targetPlayer, (#(GetEntityCoords(PlayerPedId()) - GetEntityCoords(closestPed))))
+                end
+            end
+            if IsDisabledControlJustReleased(0, 200) then
+				isSelectingActive = false
+				SetNuiFocus(false, false)
+				cb(false, false)
+            end
+            DisableControlAction(0, 25, true)
+            DisableControlAction(0, 263, true)
+            DisableControlAction(0, 140, true)
+            DisableControlAction(0, 141, true)
+            DisableControlAction(0, 142, true)
+            DisableControlAction(0, 143, true)
+            DisableControlAction(0, 200, true)
+            Citizen.Wait(0)
+        end
+        closestPed = nil
+    end)
+end
+
+exports('getMousePlayer', Utils.getMousePlayer)
+
 return Utils
