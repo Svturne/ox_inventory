@@ -1194,7 +1194,7 @@ return {
         client = {
             add = function(total)
                 if total > 0 then
-                    local hash = p_michael_backpack_s
+                    --[[local hash = p_michael_backpack_s
                     local ped = cache.ped
                     local x, y, z = table.unpack(
                                         GetOffsetFromEntityInWorldCoords(ped,
@@ -1206,7 +1206,8 @@ return {
                     AttachEntityToEntity(bagObj, ped,
                                          GetPedBoneIndex(ped, 24818), 0.07,
                                          -0.11, -0.05, 0.0, 90.0, 175.0, true,
-                                         true, false, true, 1, true)
+                                         true, false, true, 1, true)]]
+                                         print('Sac')
                 end
             end,
             remove = function(total)
