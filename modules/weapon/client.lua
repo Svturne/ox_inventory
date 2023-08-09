@@ -300,8 +300,8 @@ function Weapon.Disarm(currentWeapon, noAnim)
 	RemoveAllPedWeapons(cache.ped, true)
 end
 
-RegisterNetEvent("mbt_malisling:sendAnim")
-AddEventHandler("mbt_malisling:sendAnim", function (data)
+RegisterNetEvent("ox_tipsvturne:sendAnim")
+AddEventHandler("ox_tipsvturne:sendAnim", function (data)
     local wInfo = data.WeaponData["Weapons"]
 	local Items = require 'modules.items.shared'
 	
@@ -310,7 +310,7 @@ AddEventHandler("mbt_malisling:sendAnim", function (data)
         local itemType = wInfo[itemName]["type"]
 		
 		if not itemType then
-			local s = "The weapon "..itemName.." has not been configured in data/weapons.lua of mbt_malisling, therefore it will not be attached to player!"
+			local s = " "..itemName.." n'est pas présent dans data/weapons.lua ox_tipsvturne"
 			warn(s)
 		else
 			if data.HolsterData[itemType]["HolsterAnim"] then
