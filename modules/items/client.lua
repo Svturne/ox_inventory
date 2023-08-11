@@ -197,46 +197,6 @@ Item('jumelles', function(data, slot)
     if data then TriggerEvent('jumelles:Active', PlayerPedId()) end
 end)
 
-
-
-Item('kitmoteur', function(data, slot)
-    ox_inventory:useItem(data, function(data)
-        if data then
-            local veh = GetClosestVehicle(GetEntityCoords(PlayerPedId()), 15.0,
-                                          0, 70)
-            NetworkRequestControlOfEntity(veh)
-            while not NetworkHasControlOfEntity(veh) do Wait(1) end
-            SetVehicleEngineHealth(veh, 1000.0)
-            SetVehicleDoorShut(veh, 4, false, false)
-        end
-    end)
-end)
-
-Item('kitcaro', function(data, slot)
-    ox_inventory:useItem(data, function(data)
-        if data then
-            local veh = GetClosestVehicle(GetEntityCoords(PlayerPedId()), 15.0,
-                                          0, 70)
-            NetworkRequestControlOfEntity(veh)
-            while not NetworkHasControlOfEntity(veh) do Wait(1) end
-            SetVehicleFixed(veh)
-            SetVehicleDeformationFixed(veh)
-        end
-    end)
-end)
-
-Item('kitnet', function(data, slot)
-    ox_inventory:useItem(data, function(data)
-        if data then
-            local veh = GetClosestVehicle(GetEntityCoords(PlayerPedId()), 15.0,
-                                          0, 70)
-            NetworkRequestControlOfEntity(veh)
-            while not NetworkHasControlOfEntity(veh) do Wait(1) end
-            SetVehicleDirtLevel(veh, 00.0)
-        end
-    end)
-end)
-
 Item('torch', function(data, slot)
     ox_inventory:useItem(data, function(data)
         if data then ExecuteCommand('e ftorch') end
