@@ -993,36 +993,21 @@ return {
         label = 'kit de réparation moteur',
         description = 'kit de réparation pour mouteur',
         weight = 1000,
-        client = {
-            anim = {
-                dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
-                clip = 'machinic_loop_mechandplayer'
-            },
-            usetime = 5500
-        }
+        
     },
 
     ['kitnet'] = {
         label = 'kit de nettoyage',
         description = 'kit de nettoyage pour voiture',
         weight = 500,
-        client = {
-            anim = {dict = 'amb@world_human_maid_clean@', clip = 'base'},
-            usetime = 6900
-        }
+        
     },
 
     ['kitcaro'] = {
         label = 'kit de réparation carrosserie',
         description = 'kit de réparation pour carrosserie',
         weight = 1000,
-        client = {
-            anim = {
-                dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
-                clip = 'machinic_loop_mechandplayer'
-            },
-            usetime = 5500
-        }
+        
     },
 
     ['oxygenmask'] = {
