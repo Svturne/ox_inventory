@@ -601,11 +601,26 @@ return {
 
     ['key'] = {label = 'Clé', weight = 100, stack = false, consume = 0},
 
+    
     ['camera'] = {
         label = 'Appareil photo',
         weight = 900,
         close = true,
         stack = false,
+    },
+
+    ['paper'] = {
+        label = 'Papier',
+        weight = 1,
+        description = "Peut être utiliser avec une imprimante si vous avez de l'encre"
+        
+    },
+
+    ['ink'] = {
+        label = 'Encre',
+        weight = 10,
+        description = "Pour imprimante"
+        
     },
 
     ['photo'] = {
