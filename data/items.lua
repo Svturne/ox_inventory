@@ -616,6 +616,14 @@ return {
         consume = 0
     },
 
+    ['feuille'] = {
+        label = 'Feuille',
+        weight = 70,
+        close = true,
+        stack = false,
+        consume = 0
+    },
+
     ['ticketparking'] = {
         label = 'Ticket de Parking',
         weight = 70,
