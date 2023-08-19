@@ -147,6 +147,14 @@ Item('photo', function(data, slot)
     end)
 end)
 
+Item('feuille', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then
+            TriggerEvent('LF_camera:client:use-photo', slot.metadata.photourl)
+        end
+    end)
+end)
+
 Item('roller', function(data, slot)
     ox_inventory:useItem(data, function(data)
         if data then TriggerEvent('LF_roller:client:useroller') end
