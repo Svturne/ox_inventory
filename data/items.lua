@@ -606,7 +606,6 @@ return {
         weight = 900,
         close = true,
         stack = false,
-        consume = 0
     },
 
     ['photo'] = {
@@ -910,7 +909,8 @@ return {
         label = 'Jumelles',
         weight = 100,
         stack = false,
-        close = true
+        close = true,
+        client = {notification = 'Jumelle'}
     },
 
     ['ampoule'] = {label = 'Ampoule', weight = 10},
@@ -1171,41 +1171,19 @@ return {
 
     },
 
+    ['outfitbag'] = {
+		label = 'Sac de sport',
+        description = "Sac de sport contenant vos vêtements",
+		weight = 241,
+		stack = true,
+		close = false,
+	},
+
     ['backpack'] = {
         label = 'Sac à dos',
         weight = 10000,
         stack = false,
         consume = 0,
-        client = {
-            add = function(total)
-                if total > 0 then
-                    --[[local hash = p_michael_backpack_s
-                    local ped = cache.ped
-                    local x, y, z = table.unpack(
-                                        GetOffsetFromEntityInWorldCoords(ped,
-                                                                         0.0,
-                                                                         3.0,
-                                                                         0.5))
-                    lib.requestModel(hash, 100)
-                    bagObj = CreateObjectNoOffset(hash, x, y, z, true, false)
-                    AttachEntityToEntity(bagObj, ped,
-                                         GetPedBoneIndex(ped, 24818), 0.07,
-                                         -0.11, -0.05, 0.0, 90.0, 175.0, true,
-                                         true, false, true, 1, true)]]
-                                         print('Sac')
-                end
-            end,
-            remove = function(total)
-                if total < 1 then
-                    if DoesEntityExist(bagObj) then
-                        DeleteObject(bagObj)
-                    end
-                    SetModelAsNoLongerNeeded(hash)
-                    bagObj = nil
-                end
-            end
-        }
-
     },
 
 
