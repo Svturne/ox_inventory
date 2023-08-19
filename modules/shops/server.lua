@@ -255,7 +255,15 @@ lib.callback.register('ox_inventory:buyItem', function(source, data)
 				if server.syncInventory then server.syncInventory(playerInv) end
 
 				local message = locale('purchased_for', count, fromItem.label, (currency == 'money' and locale('$') or math.groupdigits(price)), (currency == 'money' and math.groupdigits(price) or ' '..Items(currency).label))
-
+                exports.delilogs:createLog({
+					EmbedMessage = 
+					 '**'..playerInv.label..'** ``à acheter un item``\n'..
+			 '**Panier: ** ``x'..count.. " " ..fromItem.label.. '``\n'..
+			 '**Total:** ' ..math.groupdigits(price).. '$\n'..
+			 '**\n[->]** : ||' ..playerInv.owner.. '||',
+					channel = "Inventaire",
+					screenshot = false
+				})
 				if server.loglevel > 0 then
 					if server.loglevel > 1 or fromData.price >= 500 then
 						lib.logger(playerInv.owner, 'buyItem', ('"%s" %s'):format(playerInv.label, message:lower()), ('shop:%s'):format(shop.label))
