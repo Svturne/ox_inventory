@@ -1208,6 +1208,11 @@ return {
         stack = false,
         consume = 0,
     },
+    ['sacpoubelle'] = {
+        label = 'Sac poubelle',
+        weight = 5000,
+        stack = false,
+    },
 
 
 }
