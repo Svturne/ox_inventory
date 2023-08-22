@@ -18,6 +18,10 @@ function client.setPlayerStatus(values)
 				value = -value
 			end
 
+			if (name == 'poo' or name == 'pee') then
+				value = -value
+			end
+
 			value = value * 0.0001
 		end
 
