@@ -548,7 +548,7 @@ return {
         label = 'bouteille d\'eau',
         weight = 500,
         client = {
-            status = {thirst = 200000, drunk = -10000, pee = 1000},
+            status = {thirst = 200000, drunk = -10000, pee = 255000},
             anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
             prop = {
                 model = prop_ld_flow_bottle,
