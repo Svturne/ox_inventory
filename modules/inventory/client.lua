@@ -2,7 +2,7 @@ if not lib then return end
 
 local Inventory = {}
 
-Inventory.Dumpsters = {218085040, 666561306, -58485588, -206690185, 1511880420, 682791951, 651101403, -1188733122, 218085040}
+Inventory.Dumpsters = {218085040, 666561306, -58485588, -206690185, 1511880420, 682791951, 651101403, -1188733122, 218085040, -58485588, 666561306}
 Inventory.chariot = {1036195894, 1918323043, -230045366}
 function Inventory.OpenDumpster(entity)
 	local netId = NetworkGetEntityIsNetworked(entity) and NetworkGetNetworkIdFromEntity(entity)
