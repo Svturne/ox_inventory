@@ -995,6 +995,7 @@ return {
     },
 
     ['canneapeche'] = {label = 'Canne à pêche', weight = 50},
+    ['puceatm'] = {label = 'Puce explosif', weight = 50};
 
     ['tshirt'] = {
         label = 'T-shirt',
