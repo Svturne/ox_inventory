@@ -223,11 +223,23 @@ CreateThread(function()
 
 	local count = 0
 
-	Wait(1000)
+    Wait(1000)
 
-	for _ in pairs(ItemList) do
-		count += 1
-	end
+    for itemName, itemData in pairs(ItemList) do
+        count = count + 1
+
+        -- Vérifier si l'image existe pour cet item
+        local imageFilename = itemName .. ".png"
+        local imagePath = "/web/images/" .. imageFilename
+
+        -- Charger le fichier d'image de la ressource
+        local imageFile = LoadResourceFile(shared.resource, imagePath)
+
+        -- Si l'image n'existe pas, afficher un message
+        if not imageFile then
+            print("Image manquante pour l'item: " .. itemName)
+        end
+    end
 
 	shared.info(('Inventory has loaded %d items'):format(count))
 	collectgarbage('collect') -- clean up from initialisation
