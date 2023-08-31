@@ -1,34 +1,4 @@
 return {
-    ['testburger'] = {
-        label = 'Test Burger',
-        weight = 220,
-        degrade = 60,
-        client = {
-            status = {hunger = 200000},
-            anim = 'eating',
-            prop = 'burger',
-            usetime = 2500,
-            export = 'ox_inventory_examples.testburger'
-        },
-        server = {
-            export = 'ox_inventory_examples.testburger',
-            test = 'what an amazingly delicious burger, amirite?'
-        },
-        buttons = {
-            {
-                label = 'Lick it',
-                action = function(slot)
-                    print('You licked the burger')
-                end
-            }, {
-                label = 'Squeeze it',
-                action = function(slot)
-                    print('You squeezed the burger :(')
-                end
-            }
-        }
-    },
-
     ['bandage'] = {
         label = 'Bandage',
         weight = 115,
@@ -51,6 +21,10 @@ return {
     ['medikit'] = {label = 'Medi-kit', weight = 115},
 
     ['tente'] = {label = 'Kit de camping', weight = 1150},
+
+    ['bocalvide'] = {label = 'Bocal vide', weight = 500},
+    ['bocallait'] = {label = 'Bocal de lait', weight = 600},
+
 
     ['torch'] = {
         label = 'Torch',
