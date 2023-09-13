@@ -23,8 +23,10 @@ return {
     ['tente'] = {label = 'Kit de camping', weight = 1150},
 
     ['bocalvide'] = {label = 'Bocal vide', weight = 500},
+
     ['bocallait'] = {label = 'Bocal de lait', weight = 600},
 
+    ['empty_petrolcan'] = {label = 'Bidon d\'essence', weight = 1200, description = 'Ce bidon est vide, vous pouvez le remplir à l\'aide d\'une citerne d\'essence'},
 
     ['torch'] = {
         label = 'Torch',
