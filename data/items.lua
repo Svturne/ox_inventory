@@ -101,6 +101,9 @@ return {
     ['pepper_spray'] = {
         label = 'Spray au poivre',
         description = "Spray contre les zombies et peu aussi aveugler un humain.",
+        stack = false,
+        consume = 0.2,
+        decay = true,
         weight = 220
     },
 
