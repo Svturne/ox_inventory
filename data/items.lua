@@ -98,6 +98,12 @@ return {
 
     ['ciseau'] = {label = 'Ciseau', weight = 10},
 
+    ['pepper_spray'] = {
+        label = 'Spray au poivre',
+        description = "Spray contre les zombies et peu aussi aveugler un humain.",
+        weight = 220
+    },
+
     ['burger'] = {
         label = 'Burger',
         weight = 220,
