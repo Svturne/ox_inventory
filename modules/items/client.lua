@@ -77,9 +77,16 @@ Item('bandage', function(data, slot)
     local health = GetEntityHealth(cache.ped)
     ox_inventory:useItem(data, function(data)
         if data then
-            SetEntityHealth(cache.ped, math.min(maxHealth, math.floor(
-                                                    health + maxHealth / 16)))
+            SetEntityHealth(cache.ped, math.min(maxHealth, math.floor(health + maxHealth / 16)))
             lib.notify({description = 'You feel better already'})
+        end
+    end)
+end)
+
+Item('pepper_spray', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then
+        TriggerEvent("pepperspray:Togglepepperspray", PlayerData.id)
         end
     end)
 end)
@@ -94,6 +101,8 @@ Item('armour', function(data, slot)
         end)
     end
 end)
+
+
 
 client.parachute = false
 Item('parachute', function(data, slot)
