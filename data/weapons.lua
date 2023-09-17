@@ -347,6 +347,19 @@ return {
             durability = 0.1,
         },
 
+        ['WEAPON_BRICK2'] = {
+            label = 'Brique jetable',
+            weight = 300,
+            durability = 0.1,
+            throwable = true,
+        },
+
+        ['WEAPON_BRICK'] = {
+            label = 'Brique',
+            weight = 300,
+            durability = 0.1,
+        },
+
         ['WEAPON_KNUCKLE'] = {
             label = 'Knuckle Dusters',
             weight = 300,
