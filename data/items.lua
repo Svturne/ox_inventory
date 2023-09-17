@@ -13,20 +13,22 @@ return {
                 pos = vec3(-0.14, -0.14, -0.08),
                 rot = vec3(-50.0, -50.0, 0.0)
             },
-            disable = {move = true, car = true, combat = true},
+            disable = { move = true, car = true, combat = true },
             usetime = 2500
         }
     },
 
-    ['medikit'] = {label = 'Medi-kit', weight = 115},
+    ['medikit'] = { label = 'Medi-kit', weight = 115 },
 
-    ['tente'] = {label = 'Kit de camping', weight = 1150},
+    ['tente'] = { label = 'Kit de camping', weight = 1150 },
 
-    ['bocalvide'] = {label = 'Bocal vide', weight = 500},
+    ['bocalvide'] = { label = 'Bocal vide', weight = 500 },
 
-    ['bocallait'] = {label = 'Bocal de lait', weight = 600},
+    ['bocallait'] = { label = 'Bocal de lait', weight = 600 },
 
-    ['empty_petrolcan'] = {label = 'Bidon d\'essence', weight = 1200, description = 'Ce bidon est vide, vous pouvez le remplir à l\'aide d\'une citerne d\'essence'},
+    ['trousseau'] = { label = 'Trousseau de clés', weight = 50 },
+
+    ['empty_petrolcan'] = { label = 'Bidon d\'essence', weight = 1200, description = 'Ce bidon est vide, vous pouvez le remplir à l\'aide d\'une citerne d\'essence' },
 
     ['torch'] = {
         label = 'Torch',
@@ -36,7 +38,7 @@ return {
         degrade = 60
     },
 
-    ['black_money'] = {label = 'Argent sale'},
+    ['black_money'] = { label = 'Argent sale' },
 
     ['belier'] = {
         label = 'Bélier',
@@ -86,7 +88,7 @@ return {
         description = 'Pochon de cocaine (100g)'
     },
 
-    ['weed_plant'] = {label = 'Feuille de weed', weight = 15},
+    ['weed_plant'] = { label = 'Feuille de weed', weight = 15 },
 
     ['weed_pochon'] = {
         label = 'Weed',
@@ -94,9 +96,9 @@ return {
         description = 'Pochon de weed (100g)'
     },
 
-    ['pochonvide'] = {label = 'Pochon vide', weight = 10},
+    ['pochonvide'] = { label = 'Pochon vide', weight = 10 },
 
-    ['ciseau'] = {label = 'Ciseau', weight = 10},
+    ['ciseau'] = { label = 'Ciseau', weight = 10 },
 
     ['pepper_spray'] = {
         label = 'Spray au poivre',
@@ -113,7 +115,7 @@ return {
         label = 'Burger',
         weight = 220,
         client = {
-            status = {hunger = 20000},
+            status = { hunger = 20000 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500,
@@ -125,8 +127,8 @@ return {
         label = 'BonBon',
         weight = 20,
         client = {
-            status = {hunger = 10000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 10000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = ng_proc_candy01a,
                 pos = vec3(0.01, 0.01, 0.00),
@@ -141,8 +143,8 @@ return {
         label = 'Chips au fromage',
         weight = 20,
         client = {
-            status = {hunger = 10000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 10000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = v_ret_ml_chips4,
                 pos = vec3(0.01, 0.01, 0.00),
@@ -156,8 +158,8 @@ return {
         label = 'Chips BBq',
         weight = 20,
         client = {
-            status = {hunger = 10000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 10000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = v_ret_ml_chips1,
                 pos = vec3(0.01, 0.01, 0.00),
@@ -171,8 +173,8 @@ return {
         label = 'Chips',
         weight = 20,
         client = {
-            status = {hunger = 10000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 10000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = v_ret_ml_chips3,
                 pos = vec3(0.01, 0.01, 0.00),
@@ -186,8 +188,8 @@ return {
         label = 'Chips Tortilla',
         weight = 20,
         client = {
-            status = {hunger = 10000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 10000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = v_ret_ml_chips4,
                 pos = vec3(0.01, 0.01, 0.00),
@@ -201,8 +203,8 @@ return {
         label = 'Barquette de frites',
         weight = 20,
         client = {
-            status = {hunger = 21000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 21000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = v_ret_ml_chips4,
                 pos = vec3(0.01, 0.01, 0.00),
@@ -216,8 +218,8 @@ return {
         label = 'Ramen au poulet',
         weight = 20,
         client = {
-            status = {hunger = 25000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 25000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_food_cb_juice02,
                 pos = vec3(0.01, 0.01, 0.00),
@@ -231,8 +233,8 @@ return {
         label = 'Ramen au poulet',
         weight = 20,
         client = {
-            status = {hunger = 25000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 25000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_food_cb_juice02,
                 pos = vec3(0.01, 0.01, 0.00),
@@ -246,8 +248,8 @@ return {
         label = 'Sandwich au poulet',
         weight = 250,
         client = {
-            status = {hunger = 25500},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 25500 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_food_cb_juice02,
                 pos = vec3(0.01, 0.01, 0.00),
@@ -261,7 +263,7 @@ return {
         label = 'Maxi Burger',
         weight = 250,
         client = {
-            status = {hunger = 35500},
+            status = { hunger = 35500 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500
@@ -272,7 +274,7 @@ return {
         label = 'BS Burger',
         weight = 250,
         client = {
-            status = {hunger = 65500},
+            status = { hunger = 65500 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500
@@ -283,7 +285,7 @@ return {
         label = 'Chicken Burger',
         weight = 250,
         client = {
-            status = {hunger = 26500},
+            status = { hunger = 26500 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500
@@ -294,7 +296,7 @@ return {
         label = 'BS Wrap',
         weight = 250,
         client = {
-            status = {hunger = 29500},
+            status = { hunger = 29500 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500
@@ -305,8 +307,8 @@ return {
         label = 'BS Nuggets',
         weight = 250,
         client = {
-            status = {hunger = 29500},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 29500 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_food_bs_juice01,
                 pos = vec3(0.01, 0.01, 0.00),
@@ -320,8 +322,8 @@ return {
         label = 'BS Rings',
         weight = 250,
         client = {
-            status = {hunger = 21500},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 21500 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_food_bs_juice01,
                 pos = vec3(0.01, 0.01, 0.00),
@@ -335,8 +337,8 @@ return {
         label = 'BS Frites',
         weight = 250,
         client = {
-            status = {hunger = 21500},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 21500 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_food_bs_juice01,
                 pos = vec3(0.01, 0.01, 0.00),
@@ -350,8 +352,8 @@ return {
         label = 'Coca-Cola',
         weight = 350,
         client = {
-            status = {thirst = 150000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { thirst = 150000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_ecola_can,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -366,8 +368,8 @@ return {
         label = 'Café',
         weight = 350,
         client = {
-            status = {thirst = 200000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { thirst = 200000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = p_ing_coffeecup_01,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -381,8 +383,8 @@ return {
         label = 'Café au lait',
         weight = 350,
         client = {
-            status = {thirst = 250000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { thirst = 250000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = p_ing_coffeecup_01,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -396,8 +398,8 @@ return {
         label = 'Granita',
         weight = 350,
         client = {
-            status = {thirst = 255000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { thirst = 255000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = p_ing_coffeecup_01,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -407,27 +409,27 @@ return {
         }
     },
 
-    ['gcoffee'] = {label = 'Graine de café', weight = 50},
+    ['gcoffee'] = { label = 'Graine de café', weight = 50 },
 
-    ['pouletcru'] = {label = 'Poulet cru', weight = 50},
+    ['pouletcru'] = { label = 'Poulet cru', weight = 50 },
 
-    ['riz'] = {label = 'Riz', weight = 50},
+    ['riz'] = { label = 'Riz', weight = 50 },
 
-    ['saumon'] = {label = 'Saumon', weight = 50},
+    ['saumon'] = { label = 'Saumon', weight = 50 },
 
-    ['boitederamen'] = {label = 'Boite de Ramen', weight = 50},
+    ['boitederamen'] = { label = 'Boite de Ramen', weight = 50 },
 
     ['parachute'] = {
         label = 'Parachute',
         weight = 8000,
         stack = false,
         client = {
-            anim = {dict = 'clothingshirt', clip = 'try_shirt_positive_d'},
+            anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
             usetime = 1500
         }
     },
 
-    ['garbage'] = {label = 'Déchets'},
+    ['garbage'] = { label = 'Déchets' },
 
     ['plastique'] = {
         label = 'Filament souple',
@@ -470,7 +472,7 @@ return {
         label = 'Culotte',
         weight = 10,
         consume = 0,
-        client = {notification = 't\'es serieux la ?'}
+        client = { notification = 't\'es serieux la ?' }
     },
 
     ['lockpick'] = {
@@ -482,7 +484,7 @@ return {
                 dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
                 clip = 'machinic_loop_mechandplayer'
             },
-            disable = {move = true, car = true, combat = true},
+            disable = { move = true, car = true, combat = true },
             usetime = 5000,
             cancel = true
         }
@@ -512,15 +514,15 @@ return {
         }
     },
 
-    ['money'] = {label = 'Argent'},
+    ['money'] = { label = 'Argent' },
 
 
     ['mustard'] = {
         label = 'Moutarde',
         weight = 500,
         client = {
-            status = {hunger = 25000, thirst = -55000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { hunger = 25000, thirst = -55000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_food_mustard,
                 pos = vec3(0.01, 0.0, -0.07),
@@ -535,8 +537,8 @@ return {
         label = 'bouteille d\'eau',
         weight = 500,
         client = {
-            status = {thirst = 200000, drunk = -10000, pee = 255000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { thirst = 200000, drunk = -10000, pee = 255000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_ld_flow_bottle,
                 pos = vec3(0.03, 0.03, 0.02),
@@ -554,7 +556,7 @@ return {
         weight = 3000,
         stack = false,
         client = {
-            anim = {dict = 'clothingshirt', clip = 'try_shirt_positive_d'},
+            anim = { dict = 'clothingshirt', clip = 'try_shirt_positive_d' },
             usetime = 3500
         }
     },
@@ -568,7 +570,7 @@ return {
         description = 'Masque à gaz bas de gamme',
         degrade = 60,
         client = {
-            anim = {dict = 'mp_masks@on_foot', clip = 'put_on_mask'},
+            anim = { dict = 'mp_masks@on_foot', clip = 'put_on_mask' },
             usetime = 1000,
             remove = function(total)
                 if total < 1 then
@@ -586,9 +588,9 @@ return {
 
     },
 
-    ['key'] = {label = 'Clé', weight = 100, stack = false, consume = 0},
+    ['key'] = { label = 'Clé', weight = 100, stack = false, consume = 0 },
 
-    
+
     ['camera'] = {
         label = 'Appareil photo',
         weight = 900,
@@ -600,14 +602,14 @@ return {
         label = 'Papier',
         weight = 1,
         description = "Peut être utiliser avec une imprimante si vous avez de l'encre"
-        
+
     },
 
     ['ink'] = {
         label = 'Encre',
         weight = 10,
         description = "Pour imprimante"
-        
+
     },
 
     ['photo'] = {
@@ -640,7 +642,7 @@ return {
         close = true,
         stack = true,
         consume = 0,
-        client = {notification = '/enlever pour enlever les roller'}
+        client = { notification = '/enlever pour enlever les roller' }
     },
 
     ['radio'] = {
@@ -653,7 +655,9 @@ return {
             remove = function(total)
                 -- Disconnets a player from the radio when all his radio items are removed.
                 if total < 1 and GetConvar('radio_noRadioDisconnect', 'true') ==
-                    'true' then exports.ac_radio:leaveRadio() end
+                    'true' then
+                    exports.ac_radio:leaveRadio()
+                end
             end
         }
     },
@@ -699,34 +703,34 @@ return {
 
     },
 
-    ['cartegrise'] = {label = 'Carte grise', stack = false},
+    ['cartegrise'] = { label = 'Carte grise', stack = false },
 
-    ['citron'] = {label = 'Citron', weight = 30},
+    ['citron'] = { label = 'Citron', weight = 30 },
 
-    ['fruitsmelange'] = {label = 'Mélange de fruits', weight = 50},
+    ['fruitsmelange'] = { label = 'Mélange de fruits', weight = 50 },
 
-    ['banane'] = {label = 'Banane', weight = 20},
+    ['banane'] = { label = 'Banane', weight = 20 },
 
-    ['ice'] = {label = 'Glacon', weight = 20},
+    ['ice'] = { label = 'Glacon', weight = 20 },
 
-    ['apple'] = {label = 'Pomme', weight = 20},
+    ['apple'] = { label = 'Pomme', weight = 20 },
 
-    ['orange'] = {label = 'Orange', weight = 20},
+    ['orange'] = { label = 'Orange', weight = 20 },
 
-    ['caisseorange'] = {label = 'Caisse d\'orange', weight = 2500},
+    ['caisseorange'] = { label = 'Caisse d\'orange', weight = 2500 },
 
-    ['fraise'] = {label = 'Fraise', weight = 10},
+    ['fraise'] = { label = 'Fraise', weight = 10 },
 
-    ['menthe'] = {label = 'Menthe', weight = 5},
+    ['menthe'] = { label = 'Menthe', weight = 5 },
 
-    ['coconut'] = {label = 'Noix de Coco', weight = 100},
+    ['coconut'] = { label = 'Noix de Coco', weight = 100 },
 
     ['lait'] = {
         label = 'Bouteille de lait',
         weight = 300,
         client = {
-            status = {thirst = 4000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { thirst = 4000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = v_res_tt_milk,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -740,8 +744,8 @@ return {
         label = 'Smoothie Banane',
         weight = 30,
         client = {
-            status = {thirst = 35000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { thirst = 35000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = p_ing_coffeecup_01,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -755,8 +759,8 @@ return {
         label = 'Smoothie Fraise',
         weight = 30,
         client = {
-            status = {thirst = 39000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { thirst = 39000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = p_ing_coffeecup_01,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -770,8 +774,8 @@ return {
         label = 'Smoothie Fruits',
         weight = 30,
         client = {
-            status = {thirst = 35000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { thirst = 35000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = p_ing_coffeecup_01,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -781,13 +785,13 @@ return {
         }
     },
 
-    ['nutella'] = {label = 'Nutella 250g', weight = 250},
+    ['nutella'] = { label = 'Nutella 250g', weight = 250 },
 
     ['bread'] = {
         label = 'Pain',
         weight = 10,
         client = {
-            status = {hunger = 20000},
+            status = { hunger = 20000 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
@@ -805,7 +809,7 @@ return {
         label = 'Pizza Margherita',
         weight = 10,
         client = {
-            status = {hunger = 420000},
+            status = { hunger = 420000 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
@@ -823,7 +827,7 @@ return {
         label = 'Sushi',
         weight = 10,
         client = {
-            status = {hunger = 420000},
+            status = { hunger = 420000 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
@@ -842,7 +846,7 @@ return {
         weight = 30,
         description = 'Plat italien',
         client = {
-            status = {hunger = 51000},
+            status = { hunger = 51000 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
@@ -861,7 +865,7 @@ return {
         weight = 30,
         description = 'Plat italien',
         client = {
-            status = {hunger = 51000},
+            status = { hunger = 51000 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
@@ -875,11 +879,11 @@ return {
         }
     },
 
-    ['tomate'] = {label = 'Tomate', weight = 10, description = 'Ingredient'},
+    ['tomate'] = { label = 'Tomate', weight = 10, description = 'Ingredient' },
 
-    ['farine'] = {label = 'Farine', weight = 950, description = 'Ingredient'},
+    ['farine'] = { label = 'Farine', weight = 950, description = 'Ingredient' },
 
-    ['pates'] = {label = 'Pâtes', weight = 10, description = 'Ingredient'},
+    ['pates'] = { label = 'Pâtes', weight = 10, description = 'Ingredient' },
 
     ['viandeh'] = {
         label = 'Viande hachée',
@@ -893,13 +897,13 @@ return {
         description = 'Ingredient'
     },
 
-    ['fromage'] = {label = 'Fromage', weight = 10, description = 'Ingredient'},
+    ['fromage'] = { label = 'Fromage', weight = 10, description = 'Ingredient' },
 
     ['tartinenutella'] = {
         label = 'Tartine nutella',
         weight = 20,
         client = {
-            status = {hunger = 26000},
+            status = { hunger = 26000 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
@@ -913,31 +917,31 @@ return {
         }
     },
 
-    ['pile'] = {label = 'Pile', weight = 10},
+    ['pile'] = { label = 'Pile', weight = 10 },
 
     ['jumelles'] = {
         label = 'Jumelles',
         weight = 100,
         stack = false,
         close = true,
-        client = {notification = 'Jumelle'}
+        client = { notification = 'Jumelle' }
     },
 
-    ['ampoule'] = {label = 'Ampoule', weight = 10},
+    ['ampoule'] = { label = 'Ampoule', weight = 10 },
 
-    ['morceaudebois'] = {label = 'Morceaux de bois', weight = 150},
+    ['morceaudebois'] = { label = 'Morceaux de bois', weight = 150 },
 
-    ['roue'] = {label = 'Roue bmx', weight = 360},
+    ['roue'] = { label = 'Roue bmx', weight = 360 },
 
-    ['pedales'] = {label = 'Pédales bmx', weight = 60},
+    ['pedales'] = { label = 'Pédales bmx', weight = 60 },
 
-    ['guidon'] = {label = 'Guidon bmx', weight = 600},
+    ['guidon'] = { label = 'Guidon bmx', weight = 600 },
 
     ['bmx'] = {
         label = 'Bmx',
         weight = 2000,
         client = {
-            anim = {dict = 'mini@repair', clip = 'fixing_a_ped'},
+            anim = { dict = 'mini@repair', clip = 'fixing_a_ped' },
             usetime = 2500
         }
     },
@@ -946,14 +950,14 @@ return {
         label = 'Doliprane',
         description = 'Efficace pour certaines maladies.',
         weight = 6,
-        client = {anim = {dict = 'mp_suicide', clip = 'pill'}, usetime = 2500}
+        client = { anim = { dict = 'mp_suicide', clip = 'pill' }, usetime = 2500 }
     },
 
-    ['ferraille'] = {label = 'Ferraille', weight = 1500, description = 'Outil'},
+    ['ferraille'] = { label = 'Ferraille', weight = 1500, description = 'Outil' },
 
-    ['acier'] = {label = 'Acier', weight = 2500},
+    ['acier'] = { label = 'Acier', weight = 2500 },
 
-    ['acierrenforce'] = {label = 'Acier renforcé', weight = 4500},
+    ['acierrenforce'] = { label = 'Acier renforcé', weight = 4500 },
 
     ['canonpompe'] = {
         label = 'Canon scié',
@@ -967,7 +971,7 @@ return {
         weight = 1900
     },
 
-    ['cables'] = {label = 'Cables', weight = 1000, description = 'Outil'},
+    ['cables'] = { label = 'Cables', weight = 1000, description = 'Outil' },
 
     ['tissu'] = {
         label = 'Tissu',
@@ -981,8 +985,8 @@ return {
         description = 'Peut être revendu'
     },
 
-    ['canneapeche'] = {label = 'Canne à pêche', weight = 50},
-    ['puceatm'] = {label = 'Puce explosif', weight = 50};
+    ['canneapeche'] = { label = 'Canne à pêche', weight = 50 },
+    ['puceatm'] = { label = 'Puce explosif', weight = 50 },
 
     ['tshirt'] = {
         label = 'T-shirt',
@@ -990,9 +994,9 @@ return {
         description = 'Peut être revendu'
     },
 
-    ['eponge'] = {label = 'Éponge', weight = 10},
+    ['eponge'] = { label = 'Éponge', weight = 10 },
 
-    ['lavevitre'] = {label = 'Lave vitre', weight = 1000},
+    ['lavevitre'] = { label = 'Lave vitre', weight = 1000 },
 
     ['boiteoutils'] = {
         label = 'Ensembles d\'outils',
@@ -1004,21 +1008,21 @@ return {
         label = 'kit de réparation moteur',
         description = 'kit de réparation pour mouteur',
         weight = 1000,
-        
+
     },
 
     ['kitnet'] = {
         label = 'kit de nettoyage',
         description = 'kit de nettoyage pour voiture',
         weight = 500,
-        
+
     },
 
     ['kitcaro'] = {
         label = 'kit de réparation carrosserie',
         description = 'kit de réparation pour carrosserie',
         weight = 1000,
-        
+
     },
 
     ['oxygenmask'] = {
@@ -1066,8 +1070,8 @@ return {
         label = 'Bière',
         weight = 10,
         client = {
-            status = {drunk = 20000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { drunk = 20000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_amb_beer_bottle,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -1081,8 +1085,8 @@ return {
         label = 'Verre de Vin',
         weight = 10,
         client = {
-            status = {drunk = 30000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { drunk = 30000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = p_wine_glass_s,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -1096,8 +1100,8 @@ return {
         label = 'Verre de Cognac',
         weight = 10,
         client = {
-            status = {drunk = 35000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { drunk = 35000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_drink_whisky,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -1111,8 +1115,8 @@ return {
         label = 'Verre de Champagne',
         weight = 10,
         client = {
-            status = {drunk = 35000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { drunk = 35000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_cs_champ_flute,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -1126,8 +1130,8 @@ return {
         label = 'Verre de Vodka',
         weight = 10,
         client = {
-            status = {drunk = 45000},
-            anim = {dict = 'mp_player_intdrink', clip = 'loop_bottle'},
+            status = { drunk = 45000 },
+            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_drink_whisky,
                 pos = vec3(0.01, 0.01, 0.06),
@@ -1144,7 +1148,7 @@ return {
         consume = 0
     },
 
-    ['rope'] = {label = 'Corde', weight = 10, stack = false, consume = 0},
+    ['rope'] = { label = 'Corde', weight = 10, stack = false, consume = 0 },
 
     ['leather'] = {
         label = 'Peau d\'animeaux',
@@ -1176,19 +1180,19 @@ return {
         stack = false,
         close = true,
         client = {
-            anim = {dict = 'missmic4', clip = 'michael_tux_fidget'},
+            anim = { dict = 'missmic4', clip = 'michael_tux_fidget' },
             usetime = 1000
         }
 
     },
 
     ['outfitbag'] = {
-		label = 'Sac de sport',
+        label = 'Sac de sport',
         description = "Sac de sport contenant vos vêtements",
-		weight = 241,
-		stack = true,
-		close = false,
-	},
+        weight = 241,
+        stack = true,
+        close = false,
+    },
 
     ['backpack'] = {
         label = 'Sac à dos',
