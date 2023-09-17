@@ -523,7 +523,7 @@ return {
         label = 'Moutarde',
         weight = 500,
         client = {
-            status = { hunger = 25000, thirst = -55000 },
+            status = { hunger = 25000, thirst = -55000, poo = 355000, maladie = 2500 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_food_mustard,

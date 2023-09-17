@@ -14,7 +14,7 @@ function client.setPlayerStatus(values)
 		-- we need to awkwardly change the value
 		if value > 100 or value < -100 then
 			-- Hunger and thirst start at 0 and go up to 100 as you get hungry/thirsty (inverse of ESX)
-			if (name == 'hunger' or name == 'thirst' or name == 'pee' name == 'poo' or name == 'drunk') then
+			if (name == 'hunger' or name == 'thirst' or name == 'pee' name == 'poo' or name =='maladie' or name == 'drunk') then
 				value = -value
 			end
 			value = value * 0.0001
