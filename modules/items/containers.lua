@@ -59,7 +59,7 @@ setContainerProperties('paperbag', {
 
 setContainerProperties('trousseau', {
     slots = 5,
-    maxWeight = 1000,
+    maxWeight = 500,
     whitelist = { 'carkey' }
 })
 
