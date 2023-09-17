@@ -117,7 +117,7 @@ return {
         label = 'Burger',
         weight = 220,
         client = {
-            status = { hunger = 20000 },
+            status = { hunger = 20000, poo = 250000 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500,
@@ -145,7 +145,7 @@ return {
         label = 'Chips au fromage',
         weight = 20,
         client = {
-            status = { hunger = 10000 },
+            status = { hunger = 10000, maladie = -200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = v_ret_ml_chips4,
@@ -160,7 +160,7 @@ return {
         label = 'Chips BBq',
         weight = 20,
         client = {
-            status = { hunger = 10000 },
+            status = { hunger = 10000, maladie = -200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = v_ret_ml_chips1,
@@ -175,7 +175,7 @@ return {
         label = 'Chips',
         weight = 20,
         client = {
-            status = { hunger = 10000 },
+            status = { hunger = 10000, maladie = -200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = v_ret_ml_chips3,
@@ -190,7 +190,7 @@ return {
         label = 'Chips Tortilla',
         weight = 20,
         client = {
-            status = { hunger = 10000 },
+            status = { hunger = 10000, maladie = -200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = v_ret_ml_chips4,
@@ -250,7 +250,7 @@ return {
         label = 'Sandwich au poulet',
         weight = 250,
         client = {
-            status = { hunger = 25500 },
+            status = { hunger = 25500, poo = 150000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_food_cb_juice02,
@@ -265,7 +265,7 @@ return {
         label = 'Maxi Burger',
         weight = 250,
         client = {
-            status = { hunger = 35500 },
+            status = { hunger = 35500, poo = 150000 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500
@@ -276,7 +276,7 @@ return {
         label = 'BS Burger',
         weight = 250,
         client = {
-            status = { hunger = 65500 },
+            status = { hunger = 65500, poo = 250000 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500
@@ -354,7 +354,7 @@ return {
         label = 'Coca-Cola',
         weight = 350,
         client = {
-            status = { thirst = 150000 },
+            status = { thirst = 150000, pee = 150000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_ecola_can,
@@ -498,21 +498,7 @@ return {
         stack = false,
         consume = 0,
         client = {
-            add = function(total)
-                if total > 0 then
-                    pcall(function()
-                        return exports.npwd:setPhoneDisabled(false)
-                    end)
-                end
-            end,
-
-            remove = function(total)
-                if total < 1 then
-                    pcall(function()
-                        return exports.npwd:setPhoneDisabled(true)
-                    end)
-                end
-            end
+            notification = 'Batterie HS'
         }
     },
 
@@ -523,7 +509,7 @@ return {
         label = 'Moutarde',
         weight = 500,
         client = {
-            status = { hunger = 25000, thirst = -55000, poo = 355000, maladie = 2500 },
+            status = { hunger = 25000, thirst = -55000, poo = 355000, maladie = -250000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = prop_food_mustard,
@@ -905,7 +891,7 @@ return {
         label = 'Tartine nutella',
         weight = 20,
         client = {
-            status = { hunger = 26000 },
+            status = { hunger = 26000, poo = 150000 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
