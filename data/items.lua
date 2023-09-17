@@ -28,6 +28,8 @@ return {
 
     ['trousseau'] = { label = 'Trousseau de clés', weight = 50 },
 
+    ['portefeuille'] = { label = 'Portefeuille', weight = 50 },
+
     ['empty_petrolcan'] = { label = 'Bidon d\'essence', weight = 1200, description = 'Ce bidon est vide, vous pouvez le remplir à l\'aide d\'une citerne d\'essence' },
 
     ['torch'] = {

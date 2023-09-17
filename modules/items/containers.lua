@@ -63,6 +63,12 @@ setContainerProperties('trousseau', {
     whitelist = { 'carkey' }
 })
 
+setContainerProperties('portefeuille', {
+    slots = 10,
+    maxWeight = 500,
+    whitelist = { 'id_card', 'farmlicense', 'cartegrise', 'money' }
+})
+
 setContainerProperties('pizzabox', {
     slots = 5,
     maxWeight = 1000,
