@@ -360,6 +360,12 @@ return {
             durability = 0.1,
         },
 
+        ['WEAPON_SLHAMMER'] = {
+            label = 'Marteau long',
+            weight = 300,
+            durability = 0.1,
+        },
+
         ['WEAPON_KNUCKLE'] = {
             label = 'Knuckle Dusters',
             weight = 300,
