@@ -1136,7 +1136,7 @@ return {
         consume = 0
     },
 
-    ['handcuffshandcuffs_key'] = {
+    ['handcuffs_key'] = {
         label = 'Clé pour menottes',
         weight = 5,
         stack = false,
