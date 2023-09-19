@@ -1136,6 +1136,13 @@ return {
         consume = 0
     },
 
+    ['handcuffshandcuffs_key'] = {
+        label = 'Clé pour menottes',
+        weight = 5,
+        stack = false,
+        consume = 0
+    },
+
     ['rope'] = { label = 'Corde', weight = 10, stack = false, consume = 0 },
 
     ['leather'] = {
