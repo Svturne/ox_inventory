@@ -60,6 +60,12 @@ return {
             durability = 0.1,
         },
 
+        ['WEAPON_LUCILE'] = {
+            label = 'Batte Lucile',
+            weight = 1234,
+            durability = 0.1,
+        },
+
         ['WEAPON_BATTLEAXE'] = {
             label = 'Hache de combat',
             weight = 6500,
