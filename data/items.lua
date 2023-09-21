@@ -1201,5 +1201,71 @@ return {
         stack = false,
     },
 
-
+    -- Animeaux:
+    ['cat'] = {
+        label = 'Chat',
+        description = "Petit chat en manque d'affection",
+        weight = 5000,
+        stack = false,
+    },
+    ['loup'] = {
+        label = 'Chien loup',
+        description = "Peut être agressif",
+        weight = 5000,
+        stack = false,
+    },
+    ['lapin'] = {
+        label = 'Lapin',
+        description = "Voleur de carottes",
+        weight = 5000,
+        stack = false,
+    },
+    ['husky'] = {
+        label = 'Husky',
+        description = "Trop classe ce chien",
+        weight = 5000,
+        stack = false,
+    },
+    ['cochon'] = {
+        label = 'Cochon',
+        description = "Cochon a deux doigts de mourir",
+        weight = 5000,
+        stack = false,
+    },
+    ['caniche'] = {
+        label = 'Caniche',
+        description = "Utile que pour pécho",
+        weight = 5000,
+        stack = false,
+    },
+    ['carlin'] = {
+        label = 'Carlin',
+        description = "Seul inconvénient, il pue de la geule",
+        weight = 5000,
+        stack = false,
+    },
+    ['retriever'] = {
+        label = 'Retriever',
+        description = "Il a tendance a faire caca toute les 2 secondes",
+        weight = 5000,
+        stack = false,
+    },
+    ['berger'] = {
+        label = 'Berger',
+        description = "Le chien préféré des flics",
+        weight = 5000,
+        stack = false,
+    },
+    ['westie'] = {
+        label = 'Westie',
+        description = "Le chien préféré des flics",
+        weight = 5000,
+        stack = false,
+    },
+    ['chop'] = {
+        label = 'Chop',
+        description = "Le chien le plus connu de Los Santos",
+        weight = 5000,
+        stack = false,
+    },
 }
