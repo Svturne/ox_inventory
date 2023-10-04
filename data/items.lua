@@ -1268,4 +1268,69 @@ return {
         weight = 5000,
         stack = false,
     },
+    --- sang
+    ['blood_ap'] = {
+        label = 'Sang A+',
+        description = "Poche de sang",
+        weight = 800,
+        stack = false,
+    },
+    ['blood_bp'] = {
+        label = 'Sang B+',
+        description = "Poche de sang",
+        weight = 800,
+        stack = false,
+    },
+    ['blood_0p'] = {
+        label = 'Sang 0+',
+        description = "Poche de sang",
+        weight = 800,
+        stack = false,
+    },
+    ['blood_an'] = {
+        label = 'Sang A-',
+        description = "Poche de sang",
+        weight = 800,
+        stack = false,
+    },
+    ['blood_0n'] = {
+        label = 'Sang 0-',
+        description = "Poche de sang",
+        weight = 800,
+        stack = false,
+    },
+    ['blood_abp'] = {
+        label = 'Sang AB+',
+        description = "Poche de sang",
+        weight = 800,
+        stack = false,
+    },
+    ['blood_bn'] = {
+        label = 'Sang B-',
+        description = "Poche de sang",
+        weight = 800,
+        stack = false,
+    },
+    ['blood_abn'] = {
+        label = 'Sang AB-',
+        description = "Poche de sang",
+        weight = 800,
+        stack = false,
+    },
+    ['blood_test'] = {
+        label = 'Test sanguin',
+        weight = 300,
+        stack = true,
+    },
+    ['syringe'] = {
+        label = 'Seringue ',
+        weight = 300,
+        stack = true,
+    },
+    ['blood_empty'] = {
+        label = 'Poche vide ',
+        description = "Poche de sang vide",
+        weight = 300,
+        stack = true,
+    },
 }
