@@ -1328,8 +1328,14 @@ return {
         stack = true,
     },
     ['blood_empty'] = {
-        label = 'Poche vide ',
+        label = 'Poche vide',
         description = "Poche de sang vide",
+        weight = 300,
+        stack = true,
+    },
+
+    ['certificat_medical'] = {
+        label = 'Certificat médical',
         weight = 300,
         stack = true,
     },
