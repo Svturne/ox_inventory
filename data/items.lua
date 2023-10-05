@@ -1324,19 +1324,19 @@ return {
     },
     ['syringe'] = {
         label = 'Seringue ',
-        weight = 300,
+        weight = 50,
         stack = true,
     },
     ['blood_empty'] = {
         label = 'Poche vide',
         description = "Poche de sang vide",
-        weight = 300,
+        weight = 20,
         stack = true,
     },
 
     ['certificat_medical'] = {
         label = 'Certificat médical',
-        weight = 300,
+        weight = 10,
         stack = true,
     },
 }
