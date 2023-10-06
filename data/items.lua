@@ -9,7 +9,7 @@ return {
                 flag = 49
             },
             prop = {
-                model = prop_rolled_sock_02,
+                model = "prop_rolled_sock_02",
                 pos = vec3(-0.14, -0.14, -0.08),
                 rot = vec3(-50.0, -50.0, 0.0)
             },
@@ -132,7 +132,7 @@ return {
             status = { hunger = 10000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = ng_proc_candy01a,
+                model = "ng_proc_candy01a",
                 pos = vec3(0.01, 0.01, 0.00),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -148,7 +148,7 @@ return {
             status = { hunger = 10000, maladie = -200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = v_ret_ml_chips4,
+                model = "v_ret_ml_chips4",
                 pos = vec3(0.01, 0.01, 0.00),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -163,7 +163,7 @@ return {
             status = { hunger = 10000, maladie = -200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = v_ret_ml_chips1,
+                model = "v_ret_ml_chips1",
                 pos = vec3(0.01, 0.01, 0.00),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -178,7 +178,7 @@ return {
             status = { hunger = 10000, maladie = -200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = v_ret_ml_chips3,
+                model = "v_ret_ml_chips3",
                 pos = vec3(0.01, 0.01, 0.00),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -193,7 +193,7 @@ return {
             status = { hunger = 10000, maladie = -200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = v_ret_ml_chips4,
+                model = "v_ret_ml_chips4",
                 pos = vec3(0.01, 0.01, 0.00),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -208,7 +208,7 @@ return {
             status = { hunger = 21000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = v_ret_ml_chips4,
+                model = "v_ret_ml_chips4",
                 pos = vec3(0.01, 0.01, 0.00),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -223,7 +223,7 @@ return {
             status = { hunger = 25000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_food_cb_juice02,
+                model = "prop_food_cb_juice02",
                 pos = vec3(0.01, 0.01, 0.00),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -238,7 +238,7 @@ return {
             status = { hunger = 25000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_food_cb_juice02,
+                model = "prop_food_cb_juice02",
                 pos = vec3(0.01, 0.01, 0.00),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -253,7 +253,7 @@ return {
             status = { hunger = 25500, poo = 150000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_food_cb_juice02,
+                model = "prop_food_cb_juice02",
                 pos = vec3(0.01, 0.01, 0.00),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -312,7 +312,7 @@ return {
             status = { hunger = 29500 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_food_bs_juice01,
+                model = "prop_food_bs_juice01",
                 pos = vec3(0.01, 0.01, 0.00),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -327,7 +327,7 @@ return {
             status = { hunger = 21500 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_food_bs_juice01,
+                model = "prop_food_bs_juice01",
                 pos = vec3(0.01, 0.01, 0.00),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -342,7 +342,7 @@ return {
             status = { hunger = 21500 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_food_bs_juice01,
+                model = "prop_food_bs_juice01",
                 pos = vec3(0.01, 0.01, 0.00),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -357,7 +357,7 @@ return {
             status = { thirst = 150000, pee = 150000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_ecola_can,
+                model = "prop_ecola_can",
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -373,7 +373,7 @@ return {
             status = { thirst = 200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = p_ing_coffeecup_01,
+                model = "p_ing_coffeecup_01",
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -388,7 +388,7 @@ return {
             status = { thirst = 250000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = p_ing_coffeecup_01,
+                model = "p_ing_coffeecup_01",
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -403,7 +403,7 @@ return {
             status = { thirst = 255000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = p_ing_coffeecup_01,
+                model = "p_ing_coffeecup_01",
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -512,7 +512,7 @@ return {
             status = { hunger = 25000, thirst = -55000, poo = 355000, maladie = -250000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_food_mustard,
+                model = "prop_food_mustard",
                 pos = vec3(0.01, 0.0, -0.07),
                 rot = vec3(1.0, 1.0, -1.5)
             },
@@ -528,7 +528,7 @@ return {
             status = { thirst = 200000, drunk = -10000, pee = 255000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_ld_flow_bottle,
+                model = "prop_ld_flow_bottle",
                 pos = vec3(0.03, 0.03, 0.02),
                 rot = vec3(0.0, 0.0, -1.5)
             },
@@ -720,7 +720,7 @@ return {
             status = { thirst = 4000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = v_res_tt_milk,
+                model = "v_res_tt_milk",
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -735,7 +735,7 @@ return {
             status = { thirst = 35000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = p_ing_coffeecup_01,
+                model = "p_ing_coffeecup_01",
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -750,7 +750,7 @@ return {
             status = { thirst = 39000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = p_ing_coffeecup_01,
+                model = "p_ing_coffeecup_01",
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -765,7 +765,7 @@ return {
             status = { thirst = 35000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = p_ing_coffeecup_01,
+                model = "p_ing_coffeecup_01",
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -785,7 +785,7 @@ return {
                 clip = 'mp_player_int_eat_burger'
             },
             prop = {
-                model = prop_sandwich_01,
+                model = "prop_sandwich_01",
                 pos = vec3(0.01, 0.01, 0.0),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -803,7 +803,7 @@ return {
                 clip = 'mp_player_int_eat_burger'
             },
             prop = {
-                model = prop_sandwich_01,
+                model = "prop_sandwich_01",
                 pos = vec3(0.01, 0.01, 0.0),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -821,7 +821,7 @@ return {
                 clip = 'mp_player_int_eat_burger'
             },
             prop = {
-                model = prop_sandwich_01,
+                model = "prop_sandwich_01",
                 pos = vec3(0.01, 0.01, 0.0),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -840,7 +840,7 @@ return {
                 clip = 'mp_player_int_eat_burger'
             },
             prop = {
-                model = prop_sandwich_01,
+                model = "prop_sandwich_01",
                 pos = vec3(0.01, 0.01, 0.0),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -859,7 +859,7 @@ return {
                 clip = 'mp_player_int_eat_burger'
             },
             prop = {
-                model = prop_sandwich_01,
+                model = "prop_sandwich_01",
                 pos = vec3(0.01, 0.01, 0.0),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -897,7 +897,7 @@ return {
                 clip = 'mp_player_int_eat_burger'
             },
             prop = {
-                model = v_res_fa_bread03,
+                model = "v_res_fa_bread03",
                 pos = vec3(0.01, 0.01, 0.0),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -1061,7 +1061,7 @@ return {
             status = { drunk = 20000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_amb_beer_bottle,
+                model = "prop_amb_beer_bottle",
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -1076,7 +1076,7 @@ return {
             status = { drunk = 30000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = p_wine_glass_s,
+                model = 'p_wine_glass_s',
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -1091,7 +1091,7 @@ return {
             status = { drunk = 35000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_drink_whisky,
+                model = "prop_drink_whisky",
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -1106,7 +1106,7 @@ return {
             status = { drunk = 35000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_cs_champ_flute,
+                model = "prop_cs_champ_flute",
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -1121,7 +1121,7 @@ return {
             status = { drunk = 45000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
-                model = prop_drink_whisky,
+                model = "prop_drink_whisky",
                 pos = vec3(0.01, 0.01, 0.06),
                 rot = vec3(5.0, 5.0, -180.5)
             },
@@ -1324,19 +1324,19 @@ return {
     },
     ['syringe'] = {
         label = 'Seringue ',
-        weight = 50,
+        weight = 300,
         stack = true,
     },
     ['blood_empty'] = {
         label = 'Poche vide',
         description = "Poche de sang vide",
-        weight = 20,
+        weight = 300,
         stack = true,
     },
 
     ['certificat_medical'] = {
         label = 'Certificat médical',
-        weight = 10,
+        weight = 300,
         stack = true,
     },
 }
