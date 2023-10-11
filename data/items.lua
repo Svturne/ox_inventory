@@ -636,7 +636,6 @@ return {
         close = true,
         stack = true,
         consume = 0,
-        client = { notification = '/enlever pour enlever les roller' }
     },
 
     ['radio'] = {
