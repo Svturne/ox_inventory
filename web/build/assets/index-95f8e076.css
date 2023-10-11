@@ -196,7 +196,6 @@ button:active {
   border-top-width: 1px;
 }
 .inventory-slot-label-text {
-  text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
