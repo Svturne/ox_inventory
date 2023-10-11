@@ -646,7 +646,6 @@ return {
         close = true,
         client = {
             remove = function(total)
-                -- Disconnets a player from the radio when all his radio items are removed.
                 if total < 1 then
                     exports.mm_radio:leaveRadio()
                 end

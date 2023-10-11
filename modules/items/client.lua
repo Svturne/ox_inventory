@@ -206,10 +206,6 @@ Item('doliprane', function(data, slot)
     end)
 end)
 
-Item('radio', function(data, slot)
-    if data then TriggerEvent('tgiann-radio:use', PlayerPedId()) end
-end)
-
 Item('jumelles', function(data, slot)
     if data then TriggerEvent('jumelles:Active', PlayerPedId()) end
 end)
