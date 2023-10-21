@@ -145,7 +145,7 @@ return {
         label = 'Chips au fromage',
         weight = 20,
         client = {
-            status = { hunger = 10000, maladie = -200000 },
+            status = { hunger = 10000, maladie = 200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "v_ret_ml_chips4",
@@ -160,7 +160,7 @@ return {
         label = 'Chips BBq',
         weight = 20,
         client = {
-            status = { hunger = 10000, maladie = -200000 },
+            status = { hunger = 10000, maladie = 200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "v_ret_ml_chips1",
@@ -175,7 +175,7 @@ return {
         label = 'Chips',
         weight = 20,
         client = {
-            status = { hunger = 10000, maladie = -200000 },
+            status = { hunger = 10000, maladie = 200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "v_ret_ml_chips3",
@@ -190,7 +190,7 @@ return {
         label = 'Chips Tortilla',
         weight = 20,
         client = {
-            status = { hunger = 10000, maladie = -200000 },
+            status = { hunger = 10000, maladie = 200000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "v_ret_ml_chips4",
@@ -515,7 +515,7 @@ return {
         label = 'Moutarde',
         weight = 500,
         client = {
-            status = { hunger = 25000, thirst = -55000, poo = 355000, maladie = -250000 },
+            status = { hunger = 25000, thirst = -55000, poo = 355000, maladie = 250000 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_food_mustard",
@@ -636,6 +636,7 @@ return {
         close = true,
         stack = true,
         consume = 0,
+        client = { notification = '/enlever pour enlever les roller' }
     },
 
     ['radio'] = {
