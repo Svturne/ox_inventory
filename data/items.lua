@@ -941,7 +941,8 @@ return {
         label = 'Doliprane',
         description = 'Efficace pour certaines maladies.',
         weight = 6,
-        client = { anim = { dict = 'mp_suicide', clip = 'pill' }, usetime = 2500 }
+        client = { status = { maladie = -2500000 }, anim = { dict = 'mp_suicide', clip = 'pill' }, usetime = 2500 }
+
     },
 
     ['ferraille'] = { label = 'Ferraille', weight = 1500, description = 'Outil' },
