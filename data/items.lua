@@ -1341,6 +1341,13 @@ return {
     ['certificat_medical'] = {
         label = 'Certificat médical',
         weight = 300,
+        stack = false,
+    },
+
+    ['tag_marker'] = {
+        label = 'Badge NFC',
+        description = "Ce badge peut donner accès à un marker",
+        weight = 50,
         stack = true,
     },
 }

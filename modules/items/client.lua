@@ -220,28 +220,20 @@ Item('oxygenmask', function(data, slot)
     local usingOxygenMask = false
     ox_inventory:useItem(data, function(data)
         if data then
+            local maskoff = exports['fivem-appearance']:getPedComponents(PlayerPedId())
             SetPedComponentVariation(PlayerPedId(), 1, 175, 0, 2)
             SetPedComponentVariation(PlayerPedId(), 8, 123, 0, 0)
             usingOxygenMask = true
-
-            lib.notify({description = 'Capacité de la bouteille 100%'})
-
-            Wait(1500)
-            lib.notify({description = 'Capacité de la bouteille 75%'})
-
-            Wait(2500)
-            lib.notify({description = 'Capacité de la bouteille 50%'})
-
-            Wait(3000)
-            lib.notify({description = 'Capacité de la bouteille 25%'})
-
-            Wait(5000)
-            lib.notify({description = 'Capacité de la bouteille 0%'})
-
-            usingOxygenMask = false
-            ESX.TriggerServerCallback('esx_skin:getPlayerSkin', function(skin)
-                TriggerEvent('skinchanger:loadSkin', skin)
-            end)
+            if lib.progressCircle({
+                duration = 60000,
+                label = 'Capacité de la bouteille de gaz',
+                position = 'bottom',
+                useWhileDead = false,
+                canCancel = false,
+            }) then 
+                usingOxygenMask = false
+                exports['fivem-appearance']:setPedComponents(PlayerPedId(),maskoff)
+             end
         end
     end)
 end)
