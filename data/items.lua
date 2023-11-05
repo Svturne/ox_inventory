@@ -578,7 +578,15 @@ return {
         label = 'Clé véhicule',
         weight = 100,
         stack = false,
-        consume = 0
+        consume = 0,
+        buttons = {
+            {
+                label = 'Faire un double (200$)',
+                action = function(slot)
+                    TriggerServerEvent('ox_tipsvturne:dupliqueItem', slot)
+                end
+            }
+        },
 
     },
 
@@ -651,14 +659,6 @@ return {
                 end
             end
         }
-    },
-
-    ['sacpoubelle'] = {
-        label = 'Sac poubelle',
-        weight = 10000,
-        stack = false,
-        description = 'en dev'
-
     },
 
     ['id_card'] = {
@@ -1346,8 +1346,15 @@ return {
 
     ['tag_marker'] = {
         label = 'Badge NFC',
-        description = "Ce badge peut donner accès à un marker",
         weight = 50,
         stack = true,
+        buttons = {
+            {
+                label = 'Faire un double (200$)',
+                action = function(slot)
+                    TriggerServerEvent('ox_tipsvturne:dupliqueItem', slot)
+                end
+            }
+        },
     },
 }
