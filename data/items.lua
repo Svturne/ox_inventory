@@ -117,7 +117,7 @@ return {
         label = 'Burger',
         weight = 220,
         client = {
-            status = { hunger = 20000, poo = 250000 },
+            status = { hunger = 45, poo = 20 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500,
@@ -129,7 +129,7 @@ return {
         label = 'BonBon',
         weight = 20,
         client = {
-            status = { hunger = 10000 },
+            status = { hunger = 5 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "ng_proc_candy01a",
@@ -145,7 +145,7 @@ return {
         label = 'Chips au fromage',
         weight = 20,
         client = {
-            status = { hunger = 10000, maladie = 200000 },
+            status = { hunger = 10, poo = 5 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "v_ret_ml_chips4",
@@ -160,7 +160,7 @@ return {
         label = 'Chips BBq',
         weight = 20,
         client = {
-            status = { hunger = 10000, maladie = 200000 },
+            status = { hunger = 10, poo = 5 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "v_ret_ml_chips1",
@@ -175,7 +175,7 @@ return {
         label = 'Chips',
         weight = 20,
         client = {
-            status = { hunger = 10000, maladie = 200000 },
+            status = { hunger = 10, poo = 5 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "v_ret_ml_chips3",
@@ -190,7 +190,7 @@ return {
         label = 'Chips Tortilla',
         weight = 20,
         client = {
-            status = { hunger = 10000, maladie = 200000 },
+            status = { hunger = 10, poo = 5 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "v_ret_ml_chips4",
@@ -205,7 +205,7 @@ return {
         label = 'Barquette de frites',
         weight = 20,
         client = {
-            status = { hunger = 21000 },
+            status = { hunger = 15 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "v_ret_ml_chips4",
@@ -220,22 +220,7 @@ return {
         label = 'Ramen au poulet',
         weight = 20,
         client = {
-            status = { hunger = 25000 },
-            anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
-            prop = {
-                model = "prop_food_cb_juice02",
-                pos = vec3(0.01, 0.01, 0.00),
-                rot = vec3(5.0, 5.0, -180.5)
-            },
-            usetime = 2500
-        }
-    },
-
-    ['ramenpoulet'] = {
-        label = 'Ramen au poulet',
-        weight = 20,
-        client = {
-            status = { hunger = 25000 },
+            status = { hunger = 35 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_food_cb_juice02",
@@ -250,7 +235,7 @@ return {
         label = 'Sandwich au poulet',
         weight = 250,
         client = {
-            status = { hunger = 25500, poo = 150000 },
+            status = { hunger = 30, poo = 5 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_food_cb_juice02",
@@ -265,7 +250,7 @@ return {
         label = 'Maxi Burger',
         weight = 250,
         client = {
-            status = { hunger = 35500, poo = 150000 },
+            status = { hunger = 45, poo = 8 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500
@@ -276,7 +261,7 @@ return {
         label = 'BS Burger',
         weight = 250,
         client = {
-            status = { hunger = 65500, poo = 250000 },
+            status = { hunger = 50, poo = 10 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500
@@ -287,7 +272,7 @@ return {
         label = 'Chicken Burger',
         weight = 250,
         client = {
-            status = { hunger = 26500 },
+            status = { hunger = 45 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500
@@ -298,7 +283,7 @@ return {
         label = 'BS Wrap',
         weight = 250,
         client = {
-            status = { hunger = 29500 },
+            status = { hunger = 15 },
             anim = 'eating',
             prop = 'burger',
             usetime = 2500
@@ -309,7 +294,7 @@ return {
         label = 'BS Nuggets',
         weight = 250,
         client = {
-            status = { hunger = 29500 },
+            status = { hunger = 15 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_food_bs_juice01",
@@ -324,7 +309,7 @@ return {
         label = 'BS Rings',
         weight = 250,
         client = {
-            status = { hunger = 21500 },
+            status = { hunger = 12 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_food_bs_juice01",
@@ -339,7 +324,7 @@ return {
         label = 'BS Frites',
         weight = 250,
         client = {
-            status = { hunger = 21500 },
+            status = { hunger = 15 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_food_bs_juice01",
@@ -354,7 +339,7 @@ return {
         label = 'Coca-Cola',
         weight = 350,
         client = {
-            status = { thirst = 150000, pee = 150000 },
+            status = { thirst = 35, pee = 10 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_ecola_can",
@@ -370,7 +355,7 @@ return {
         label = 'Café',
         weight = 350,
         client = {
-            status = { thirst = 200000 },
+            status = { thirst = 45 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "p_ing_coffeecup_01",
@@ -385,7 +370,7 @@ return {
         label = 'Café au lait',
         weight = 350,
         client = {
-            status = { thirst = 250000 },
+            status = { thirst = 48 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "p_ing_coffeecup_01",
@@ -400,7 +385,7 @@ return {
         label = 'Granita',
         weight = 350,
         client = {
-            status = { thirst = 255000 },
+            status = { thirst = 48 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "p_ing_coffeecup_01",
@@ -515,7 +500,7 @@ return {
         label = 'Moutarde',
         weight = 500,
         client = {
-            status = { hunger = 25000, thirst = -55000, poo = 355000, maladie = 250000 },
+            status = { hunger = 4, thirst = -30, poo = 50, maladie = 20 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_food_mustard",
@@ -531,7 +516,7 @@ return {
         label = 'bouteille d\'eau',
         weight = 500,
         client = {
-            status = { thirst = 200000, drunk = -10000, pee = 255000 },
+            status = { thirst = 25, drunk = -50, pee = 30 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_ld_flow_bottle",
@@ -720,7 +705,7 @@ return {
         label = 'Bouteille de lait',
         weight = 300,
         client = {
-            status = { thirst = 4000 },
+            status = { thirst = 10 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "v_res_tt_milk",
@@ -735,7 +720,7 @@ return {
         label = 'Smoothie Banane',
         weight = 30,
         client = {
-            status = { thirst = 35000 },
+            status = { thirst = 35 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "p_ing_coffeecup_01",
@@ -750,7 +735,7 @@ return {
         label = 'Smoothie Fraise',
         weight = 30,
         client = {
-            status = { thirst = 39000 },
+            status = { thirst = 35 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "p_ing_coffeecup_01",
@@ -765,7 +750,7 @@ return {
         label = 'Smoothie Fruits',
         weight = 30,
         client = {
-            status = { thirst = 35000 },
+            status = { thirst = 35 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "p_ing_coffeecup_01",
@@ -782,7 +767,7 @@ return {
         label = 'Pain',
         weight = 10,
         client = {
-            status = { hunger = 20000 },
+            status = { hunger = 5 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
@@ -800,7 +785,7 @@ return {
         label = 'Pizza Margherita',
         weight = 10,
         client = {
-            status = { hunger = 420000 },
+            status = { hunger = 50 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
@@ -818,7 +803,7 @@ return {
         label = 'Sushi',
         weight = 10,
         client = {
-            status = { hunger = 420000 },
+            status = { hunger = 45 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
@@ -837,7 +822,7 @@ return {
         weight = 30,
         description = 'Plat italien',
         client = {
-            status = { hunger = 51000 },
+            status = { hunger = 55 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
@@ -856,7 +841,7 @@ return {
         weight = 30,
         description = 'Plat italien',
         client = {
-            status = { hunger = 51000 },
+            status = { hunger = 45 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
@@ -894,7 +879,7 @@ return {
         label = 'Tartine nutella',
         weight = 20,
         client = {
-            status = { hunger = 26000, poo = 150000 },
+            status = { hunger = 15, poo = 5 },
             anim = {
                 dict = 'mp_player_inteat@burger',
                 clip = 'mp_player_int_eat_burger'
@@ -941,7 +926,7 @@ return {
         label = 'Doliprane',
         description = 'Efficace pour certaines maladies.',
         weight = 6,
-        client = { status = { maladie = -2500000 }, anim = { dict = 'mp_suicide', clip = 'pill' }, usetime = 2500 }
+        client = { status = { maladie = -50 }, anim = { dict = 'mp_suicide', clip = 'pill' }, usetime = 2500 }
 
     },
 
@@ -1062,7 +1047,7 @@ return {
         label = 'Bière',
         weight = 10,
         client = {
-            status = { drunk = 20000 },
+            status = { drunk = 20 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_amb_beer_bottle",
@@ -1077,7 +1062,7 @@ return {
         label = 'Verre de Vin',
         weight = 10,
         client = {
-            status = { drunk = 30000 },
+            status = { drunk = 35 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = 'p_wine_glass_s',
@@ -1092,7 +1077,7 @@ return {
         label = 'Verre de Cognac',
         weight = 10,
         client = {
-            status = { drunk = 35000 },
+            status = { drunk = 45 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_drink_whisky",
@@ -1107,7 +1092,7 @@ return {
         label = 'Verre de Champagne',
         weight = 10,
         client = {
-            status = { drunk = 35000 },
+            status = { drunk = 25 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_cs_champ_flute",
@@ -1122,7 +1107,7 @@ return {
         label = 'Verre de Vodka',
         weight = 10,
         client = {
-            status = { drunk = 45000 },
+            status = { drunk = 55 },
             anim = { dict = 'mp_player_intdrink', clip = 'loop_bottle' },
             prop = {
                 model = "prop_drink_whisky",
