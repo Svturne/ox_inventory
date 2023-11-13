@@ -855,6 +855,183 @@ return {
         }
     },
 
+    ['can_beans'] = {
+        label = 'Boîte de conserve',
+        weight = 25,
+        description = 'Contient des haricots',
+        client = {
+            status = { hunger = 25 },
+            anim = {
+                dict = 'anim@scripted@island@special_peds@pavel@hs4_pavel_ig5_caviar_p1',
+                clip = 'base_idle'
+            },
+            prop = {
+                model = "e_food_beanscan",
+                pos = vec3(0.13, 0.05, -0.02),
+                rot = vec3(-90.0, -72.0, -23.0)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['can_dog'] = {
+        label = 'Boîte de conserve',
+        weight = 25,
+        description = 'Contient de la pâté pour chien',
+        client = {
+            status = { hunger = 5, poo = 50, maladie = 30 },
+            anim = {
+                dict = 'anim@scripted@island@special_peds@pavel@hs4_pavel_ig5_caviar_p1',
+                clip = 'base_idle'
+            },
+            prop = {
+                model = "e_food_dogcan",
+                pos = vec3(0.15, 0.03, -0.04),
+                rot = vec3(-90.0, -72.0, -23.0)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['can_empty'] = {
+        label = 'Boîte de conserve',
+        weight = 25,
+        description = 'Vide',
+    },
+
+    ['can_hotdog'] = {
+        label = 'Boîte de conserve',
+        weight = 25,
+        description = 'Contient des saucisses',
+        client = {
+            status = { hunger = 30, poo = 25 },
+            anim = {
+                dict = 'anim@scripted@island@special_peds@pavel@hs4_pavel_ig5_caviar_p1',
+                clip = 'base_idle'
+            },
+            prop = {
+                model = "e_food_outofdate",
+                pos = vec3(0.13, 0.04, -0.01),
+                rot = vec3(-90.0, -72.0, -23.0)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['can_lentejas'] = {
+        label = 'Boîte de conserve',
+        weight = 25,
+        description = 'Contient des lentilles',
+        client = {
+            status = { hunger = 30, poo = 5 },
+            anim = {
+                dict = 'anim@scripted@island@special_peds@pavel@hs4_pavel_ig5_caviar_p1',
+                clip = 'base_idle'
+            },
+            prop = {
+                model = "e_food_lentejascan",
+                pos = vec3(0.13, 0.05, -0.02),
+                rot = vec3(-90.0, -72.0, -23.0)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['can_meat'] = {
+        label = 'Boîte de conserve',
+        weight = 25,
+        description = 'Contient du beef',
+        client = {
+            status = { hunger = 30, poo = 5 },
+            anim = {
+                dict = 'anim@scripted@island@special_peds@pavel@hs4_pavel_ig5_caviar_p1',
+                clip = 'base_idle'
+            },
+            prop = {
+                model = "e_food_meatcan",
+                pos = vec3(0.13, 0.05, -0.02),
+                rot = vec3(-90.0, -72.0, -23.0)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['can_olives'] = {
+        label = 'Boîte de conserve',
+        weight = 25,
+        description = 'Contient des olives',
+        client = {
+            status = { hunger = 5, poo = 5 },
+            anim = {
+                dict = 'anim@scripted@island@special_peds@pavel@hs4_pavel_ig5_caviar_p1',
+                clip = 'base_idle'
+            },
+            prop = {
+                model = "e_food_olivescan",
+                pos = vec3(0.13, 0.04, -0.01),
+                rot = vec3(-90.0, -72.0, -23.0)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['can_pate'] = {
+        label = 'Boîte de conserve',
+        weight = 25,
+        description = 'Contient du paté de porc',
+        client = {
+            status = { hunger = 10, poo = 5 },
+            anim = {
+                dict = 'anim@scripted@island@special_peds@pavel@hs4_pavel_ig5_caviar_p1',
+                clip = 'base_idle'
+            },
+            prop = {
+                model = "e_food_patecan",
+                pos = vec3(0.13, 0.04, -0.01),
+                rot = vec3(-90.0, -72.0, -23.0)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['can_peas'] = {
+        label = 'Boîte de conserve',
+        weight = 25,
+        description = 'Contient des pois',
+        client = {
+            status = { hunger = 15, poo = 5 },
+            anim = {
+                dict = 'anim@scripted@island@special_peds@pavel@hs4_pavel_ig5_caviar_p1',
+                clip = 'base_idle'
+            },
+            prop = {
+                model = "e_food_peascan",
+                pos = vec3(0.13, 0.05, -0.02),
+                rot = vec3(-90.0, -72.0, -23.0)
+            },
+            usetime = 2500
+        }
+    },
+
+    ['can_tuna'] = {
+        label = 'Boîte de conserve',
+        weight = 25,
+        description = 'Contient du thon',
+        client = {
+            status = { hunger = 25, poo = 5 },
+            anim = {
+                dict = 'anim@scripted@island@special_peds@pavel@hs4_pavel_ig5_caviar_p1',
+                clip = 'base_idle'
+            },
+            prop = {
+                model = "e_food_tunacan",
+                pos = vec3(0.15, 0.03, -0.04),
+                rot = vec3(-90.0, -72.0, -23.0)
+            },
+            usetime = 2500
+        }
+    },
+
     ['tomate'] = { label = 'Tomate', weight = 10, description = 'Ingredient' },
 
     ['farine'] = { label = 'Farine', weight = 950, description = 'Ingredient' },
