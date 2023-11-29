@@ -866,9 +866,9 @@ return {
                 clip = 'base_idle'
             },
             prop = {
-                model = "e_food_beanscan",
-                pos = vec3(0.13, 0.05, -0.02),
-                rot = vec3(-90.0, -72.0, -23.0)
+                model = "scully_pho",
+                pos = vec3(0.000000, 0.030000, 0.010000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
             },
             usetime = 2500
         }
@@ -885,9 +885,9 @@ return {
                 clip = 'base_idle'
             },
             prop = {
-                model = "e_food_dogcan",
-                pos = vec3(0.15, 0.03, -0.04),
-                rot = vec3(-90.0, -72.0, -23.0)
+                model = "scully_pho",
+                pos = vec3(0.000000, 0.030000, 0.010000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
             },
             usetime = 2500
         }
@@ -910,9 +910,9 @@ return {
                 clip = 'base_idle'
             },
             prop = {
-                model = "e_food_outofdate",
-                pos = vec3(0.13, 0.04, -0.01),
-                rot = vec3(-90.0, -72.0, -23.0)
+                model = "scully_pho",
+                pos = vec3(0.000000, 0.030000, 0.010000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
             },
             usetime = 2500
         }
@@ -929,9 +929,9 @@ return {
                 clip = 'base_idle'
             },
             prop = {
-                model = "e_food_lentejascan",
-                pos = vec3(0.13, 0.05, -0.02),
-                rot = vec3(-90.0, -72.0, -23.0)
+                model = "scully_pho",
+                pos = vec3(0.000000, 0.030000, 0.010000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
             },
             usetime = 2500
         }
@@ -948,9 +948,9 @@ return {
                 clip = 'base_idle'
             },
             prop = {
-                model = "e_food_meatcan",
-                pos = vec3(0.13, 0.05, -0.02),
-                rot = vec3(-90.0, -72.0, -23.0)
+                model = "scully_pho",
+                pos = vec3(0.000000, 0.030000, 0.010000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
             },
             usetime = 2500
         }
@@ -967,9 +967,9 @@ return {
                 clip = 'base_idle'
             },
             prop = {
-                model = "e_food_olivescan",
-                pos = vec3(0.13, 0.04, -0.01),
-                rot = vec3(-90.0, -72.0, -23.0)
+                model = "scully_pho",
+                pos = vec3(0.000000, 0.030000, 0.010000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
             },
             usetime = 2500
         }
@@ -986,9 +986,9 @@ return {
                 clip = 'base_idle'
             },
             prop = {
-                model = "e_food_patecan",
-                pos = vec3(0.13, 0.04, -0.01),
-                rot = vec3(-90.0, -72.0, -23.0)
+                model = "scully_pho",
+                pos = vec3(0.000000, 0.030000, 0.010000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
             },
             usetime = 2500
         }
@@ -1005,9 +1005,9 @@ return {
                 clip = 'base_idle'
             },
             prop = {
-                model = "e_food_peascan",
-                pos = vec3(0.13, 0.05, -0.02),
-                rot = vec3(-90.0, -72.0, -23.0)
+                model = "scully_pho",
+                pos = vec3(0.000000, 0.030000, 0.010000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
             },
             usetime = 2500
         }
@@ -1024,9 +1024,9 @@ return {
                 clip = 'base_idle'
             },
             prop = {
-                model = "e_food_tunacan",
-                pos = vec3(0.15, 0.03, -0.04),
-                rot = vec3(-90.0, -72.0, -23.0)
+                model = "scully_pho",
+                pos = vec3(0.000000, 0.030000, 0.010000),
+                rot = vec3(0.000000, 0.000000, 0.000000)
             },
             usetime = 2500
         }
