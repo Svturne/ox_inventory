@@ -1052,6 +1052,8 @@ return {
 
     ['fromage'] = { label = 'Fromage', weight = 10, description = 'Ingredient' },
 
+    ['onion'] = { label = 'Oignon', weight = 10, degrade = 120, decay = true, stack = false, description = "Les zombies ne vont pas vous attaquer, si vous possédez de l'oignon frais sur vous" },
+
     ['tartinenutella'] = {
         label = 'Tartine nutella',
         weight = 20,
@@ -1081,6 +1083,22 @@ return {
     },
 
     ['ampoule'] = { label = 'Ampoule', weight = 10 },
+
+    ['work_light'] = {
+        label = 'Lampe rechargable',
+        weight = 500,
+        stack = false,
+        description = 'Vous aurez besoin de changer les piles une fois que la durabilité est à 0',
+        consume = 1,
+        buttons = {
+            {
+                label = 'Changer les piles',
+                action = function(slot)
+                    TriggerServerEvent('ox_tipsvturne:recharge', slot)
+                end
+            }
+        },
+    },
 
     ['morceaudebois'] = { label = 'Morceaux de bois', weight = 150 },
 

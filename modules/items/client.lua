@@ -164,6 +164,12 @@ Item('carkey', function(data, slot)
     end)
 end)
 
+Item('work_light', function(data, slot)
+    ox_inventory:useItem(data, function(data)
+        if data then TriggerEvent("svturne:spawn_light", data.metadata.durability) end
+    end)
+end)
+
 Item('photo', function(data, slot)
     ox_inventory:useItem(data, function(data)
         if data then
