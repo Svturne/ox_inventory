@@ -2,8 +2,8 @@ if not lib then return end
 
 local Inventory = {}
 
-Inventory.Dumpsters = {218085040, 666561306, -58485588, -206690185, 1511880420, 682791951, 651101403, -1188733122}
-Inventory.chariot = {1036195894, 1918323043, -230045366}
+Inventory.Dumpsters = { 218085040, 666561306, -58485588, -206690185, 1511880420, 682791951, 651101403, -1188733122 }
+Inventory.chariot = { 1036195894, 1918323043, -230045366 }
 function Inventory.OpenDumpster(entity)
 	local netId = NetworkGetEntityIsNetworked(entity) and NetworkGetNetworkIdFromEntity(entity)
 
@@ -15,90 +15,94 @@ function Inventory.OpenDumpster(entity)
 
 	if netId then
 		if lib.progressCircle({
-			duration = 5000,
-			position = 'middle',
-			useWhileDead = false,
-			canCancel = true,
-			disable = {
-				car = true,
-			},
-			anim = {
-				dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
-				clip = 'machinic_loop_mechandplayer'
-			},
-			
-		}) then client.openInventory('dumpster', 'dumpster'..netId) else lib.notify({
-			title = 'Action',
-			description = 'Vous avez annulé votre action',
-			type = 'success'
-		}) end
+				duration = 5000,
+				position = 'middle',
+				useWhileDead = false,
+				canCancel = true,
+				disable = {
+					car = true,
+				},
+				anim = {
+					dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
+					clip = 'machinic_loop_mechandplayer'
+				},
+
+			}) then
+			client.openInventory('dumpster', 'dumpster' .. netId)
+		else
+			lib.notify({
+				title = 'Action',
+				description = 'Vous avez annulé votre action',
+				type = 'success'
+			})
+		end
 	end
 end
 
 local Utils = require 'modules.utils.client'
-local Vehicles = data 'vehicles'
+local Vehicles = lib.load('data.vehicles')
 local backDoorIds = { 2, 3 }
 
 function Inventory.CanAccessTrunk(entity)
-    if cache.vehicle or not NetworkGetEntityIsNetworked(entity) then return end
+	if cache.vehicle or not NetworkGetEntityIsNetworked(entity) then return end
 
 	local vehicleHash = GetEntityModel(entity)
-    local vehicleClass = GetVehicleClass(entity)
-    local checkVehicle = Vehicles.Storage[vehicleHash]
+	local vehicleClass = GetVehicleClass(entity)
+	local checkVehicle = Vehicles.Storage[vehicleHash]
 
-    if (checkVehicle == 0 or checkVehicle == 1) or (not Vehicles.trunk[vehicleClass] and not Vehicles.trunk.models[vehicleHash]) then return end
+	if (checkVehicle == 0 or checkVehicle == 1) or (not Vehicles.trunk[vehicleClass] and not Vehicles.trunk.models[vehicleHash]) then return end
 
-    ---@type number | number[]
-    local doorId = checkVehicle and 4 or 5
+	---@type number | number[]
+	local doorId = checkVehicle and 4 or 5
 
-    if not Vehicles.trunk.boneIndex?[vehicleHash] and not GetIsDoorValid(entity, doorId --[[@as number]]) then
-        if vehicleClass ~= 11 and (doorId ~= 5 or GetEntityBoneIndexByName(entity, 'boot') ~= -1 or not GetIsDoorValid(entity, 2)) then
-            return
-        end
+	if not Vehicles.trunk.boneIndex?[vehicleHash] and not GetIsDoorValid(entity, doorId --[[@as number]]) then
+		if vehicleClass ~= 11 and (doorId ~= 5 or GetEntityBoneIndexByName(entity, 'boot') ~= -1 or not GetIsDoorValid(entity, 2)) then
+			return
+		end
 
-        if vehicleClass ~= 11 then
-            doorId = backDoorIds
-        end
-    end
+		if vehicleClass ~= 11 then
+			doorId = backDoorIds
+		end
+	end
 
-    local min, max = GetModelDimensions(vehicleHash)
-    local offset = (max - min) * (not checkVehicle and vec3(0.5, 0, 0.5) or vec3(0.5, 1, 0.5)) + min
-    offset = GetOffsetFromEntityInWorldCoords(entity, offset.x, offset.y, offset.z)
+	local min, max = GetModelDimensions(vehicleHash)
+	local offset = (max - min) * (not checkVehicle and vec3(0.5, 0, 0.5) or vec3(0.5, 1, 0.5)) + min
+	offset = GetOffsetFromEntityInWorldCoords(entity, offset.x, offset.y, offset.z)
 
-    if #(GetEntityCoords(cache.ped) - offset) < 1.5 then
-        local coords = GetEntityCoords(entity)
+	if #(GetEntityCoords(cache.ped) - offset) < 1.5 then
+		local coords = GetEntityCoords(entity)
 
-        TaskTurnPedToFaceCoord(cache.ped, coords.x, coords.y, coords.z, 0)
+		TaskTurnPedToFaceCoord(cache.ped, coords.x, coords.y, coords.z, 0)
 
-        return doorId
-    end
+		return doorId
+	end
 end
 
 function Inventory.OpenTrunk(entity)
-    ---@type number | number[] | nil
-    local door = Inventory.CanAccessTrunk(entity)
+	---@type number | number[] | nil
+	local door = Inventory.CanAccessTrunk(entity)
 
-    if not door then return end
+	if not door then return end
 
-    if GetVehicleDoorLockStatus(entity) > 1 then
-        return lib.notify({ id = 'vehicle_locked', type = 'error', description = locale('vehicle_locked') })
-    end
+	if GetVehicleDoorLockStatus(entity) > 1 then
+		return lib.notify({ id = 'vehicle_locked', type = 'error', description = locale('vehicle_locked') })
+	end
 
-    local plate = GetVehicleNumberPlateText(entity)
-    local invId = 'trunk'..plate
-    local coords = GetEntityCoords(entity)
+	local plate = GetVehicleNumberPlateText(entity)
+	local invId = 'trunk' .. plate
+	local coords = GetEntityCoords(entity)
 
-    TaskTurnPedToFaceCoord(cache.ped, coords.x, coords.y, coords.z, 0)
+	TaskTurnPedToFaceCoord(cache.ped, coords.x, coords.y, coords.z, 0)
 
-    if not client.openInventory('trunk', { id = invId, netid = NetworkGetNetworkIdFromEntity(entity), entityid = entity, door = door }) then return end
+	if not client.openInventory('trunk', { id = invId, netid = NetworkGetNetworkIdFromEntity(entity), entityid = entity, door = door }) then return end
 
-    if type(door) == 'table' then
-        for i = 1, #door do
-            SetVehicleDoorOpen(entity, door[i], false, false)
-        end
-    else
-        SetVehicleDoorOpen(entity, door --[[@as number]], false, false)
-    end
+	if type(door) == 'table' then
+		for i = 1, #door do
+			SetVehicleDoorOpen(entity, door[i], false, false)
+		end
+	else
+		SetVehicleDoorOpen(entity, door --[[@as number]], false, false)
+	end
 end
 
 if shared.target then
@@ -127,15 +131,15 @@ if shared.target then
 		distance = 2
 	})
 
-    exports.ox_target:addGlobalVehicle({
-        icon = 'fas fa-truck-ramp-box',
-        label = locale('open_label', locale('storage')),
-        distance = 1.5,
-        canInteract = Inventory.CanAccessTrunk,
-        onSelect = function(data)
-            return Inventory.OpenTrunk(data.entity)
-        end
-    })
+	exports.ox_target:addGlobalVehicle({
+		icon = 'fas fa-truck-ramp-box',
+		label = locale('open_label', locale('storage')),
+		distance = 1.5,
+		canInteract = Inventory.CanAccessTrunk,
+		onSelect = function(data)
+			return Inventory.OpenTrunk(data.entity)
+		end
+	})
 else
 	local dumpsters = table.create(0, #Inventory.Dumpsters)
 
@@ -160,21 +164,25 @@ function Inventory.Search(search, item, metadata)
 
 	if item then
 		if search == 'slots' then search = 1 elseif search == 'count' then search = 2 end
-		if type(item) == 'string' then item = {item} end
-		if type(metadata) == 'string' then metadata = {type=metadata} end
+		if type(item) == 'string' then item = { item } end
+		if type(metadata) == 'string' then metadata = { type = metadata } end
 
 		local items = #item
 		local returnData = {}
 		for i = 1, items do
 			local item = string.lower(item[i])
 			if item:sub(0, 7) == 'weapon_' then item = string.upper(item) end
-			if search == 1 then returnData[item] = {}
-			elseif search == 2 then returnData[item] = 0 end
+			if search == 1 then
+				returnData[item] = {}
+			elseif search == 2 then
+				returnData[item] = 0
+			end
 			for _, v in pairs(PlayerData.inventory) do
 				if v.name == item then
 					if not v.metadata then v.metadata = {} end
 					if not metadata or table.contains(v.metadata, metadata) then
-						if search == 1 then returnData[item][#returnData[item]+1] = PlayerData.inventory[v.slot]
+						if search == 1 then
+							returnData[item][#returnData[item] + 1] = PlayerData.inventory[v.slot]
 						elseif search == 2 then
 							returnData[item] += v.count
 						end
@@ -186,6 +194,7 @@ function Inventory.Search(search, item, metadata)
 	end
 	return false
 end
+
 exports('Search', Inventory.Search)
 
 exports('GetPlayerItems', function()
@@ -325,35 +334,36 @@ end
 ---@param point CPoint
 local function nearbyEvidence(point)
 	---@diagnostic disable-next-line: param-type-mismatch
-	DrawMarker(2, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 30, 30, 150, 222, false, false, 0, true, false, false, false)
+	DrawMarker(2, point.coords.x, point.coords.y, point.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 30, 30,
+		150, 222, false, false, 0, true, false, false, false)
 
 	if point.isClosest and point.currentDistance < 1.2 and IsControlJustReleased(0, 38) then
 		openEvidence()
 	end
 end
 
-Inventory.Evidence = setmetatable(data('evidence'), {
+Inventory.Evidence = setmetatable(lib.load('data.evidence'), {
 	__call = function(self)
 		for _, evidence in pairs(self) do
 			if evidence.point then
 				evidence.point:remove()
-            elseif evidence.zoneId then
-                exports.ox_target:removeZone(evidence.zoneId)
-                evidence.zone = nil
-            end
+			elseif evidence.zoneId then
+				exports.ox_target:removeZone(evidence.zoneId)
+				evidence.zone = nil
+			end
 
 			if client.hasGroup(shared.police) then
 				if shared.target then
 					if evidence.target then
-                        evidence.zoneId = Utils.CreateBoxZone(evidence.target, {
-                            {
-                                icon = evidence.target.icon or 'fas fa-warehouse',
-                                label = locale('open_police_evidence'),
-                                groups = shared.police,
-                                onSelect = openEvidence,
-                                iconColor = evidence.target.iconColor,
-                            }
-                        })
+						evidence.zoneId = Utils.CreateBoxZone(evidence.target, {
+							{
+								icon = evidence.target.icon or 'fas fa-warehouse',
+								label = locale('open_police_evidence'),
+								groups = shared.police,
+								onSelect = openEvidence,
+								iconColor = evidence.target.iconColor,
+							}
+						})
 					end
 				else
 					evidence.target = nil
@@ -371,35 +381,36 @@ Inventory.Evidence = setmetatable(data('evidence'), {
 
 local function nearbyStash(self)
 	---@diagnostic disable-next-line: param-type-mismatch
-	DrawMarker(2, self.coords.x, self.coords.y, self.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 30, 30, 150, 222, false, false, 0, true, false, false, false)
+	DrawMarker(2, self.coords.x, self.coords.y, self.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 30, 30, 150,
+		222, false, false, 0, true, false, false, false)
 end
 
-Inventory.Stashes = setmetatable(data('stashes'), {
+Inventory.Stashes = setmetatable(lib.load('data.stashes'), {
 	__call = function(self)
 		for id, stash in pairs(self) do
 			if stash.jobs then stash.groups = stash.jobs end
 
 			if stash.point then
 				stash.point:remove()
-            elseif stash.zoneId then
-                exports.ox_target:removeZone(stash.zoneId)
-                stash.zoneId = nil
-            end
+			elseif stash.zoneId then
+				exports.ox_target:removeZone(stash.zoneId)
+				stash.zoneId = nil
+			end
 
 			if not stash.groups or client.hasGroup(stash.groups) then
 				if shared.target then
 					if stash.target then
-                        stash.zoneId = Utils.CreateBoxZone(stash.target, {
-                            {
-                                icon = stash.target.icon or 'fas fa-warehouse',
-                                label = stash.target.label or locale('open_stash'),
-                                groups = stash.groups,
-                                onSelect = function()
-                                    exports.ox_inventory:openInventory('stash', stash.name)
-                                end,
-                                iconColor = stash.target.iconColor,
-                            },
-                        })
+						stash.zoneId = Utils.CreateBoxZone(stash.target, {
+							{
+								icon = stash.target.icon or 'fas fa-warehouse',
+								label = stash.target.label or locale('open_stash'),
+								groups = stash.groups,
+								onSelect = function()
+									exports.ox_inventory:openInventory('stash', stash.name)
+								end,
+								iconColor = stash.target.iconColor,
+							},
+						})
 					end
 				else
 					stash.target = nil
@@ -417,9 +428,9 @@ Inventory.Stashes = setmetatable(data('stashes'), {
 })
 
 RegisterNetEvent('ox_inventory:refreshMaxWeight', function(data)
-    if data.inventoryId == cache.serverId then
-        PlayerData.maxWeight = data.maxWeight
-    end
+	if data.inventoryId == cache.serverId then
+		PlayerData.maxWeight = data.maxWeight
+	end
 
 	SendNUIMessage({
 		action = 'refreshSlots',
@@ -432,123 +443,16 @@ RegisterNetEvent('ox_inventory:refreshMaxWeight', function(data)
 	})
 end)
 
-local function OpenZombie(entity)
-	local netId = NetworkGetEntityIsNetworked(entity) and NetworkGetNetworkIdFromEntity(entity)
-	if not netId then
-		NetworkRegisterEntityAsNetworked(entity)
-		SetEntityAsMissionEntity(entity)
-		netId = NetworkGetNetworkIdFromEntity(entity)
-		NetworkUseHighPrecisionBlending(netId, false)
-		SetNetworkIdExistsOnAllMachines(netId, true)
-		SetNetworkIdCanMigrate(netId, true)
-	end
-	if lib.progressCircle({
-		duration = 5000,
-		position = 'middle',
-		useWhileDead = false,
-		canCancel = true,
-		disable = {
-			car = true,
-		},
-		anim = {
-			dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
-			clip = 'machinic_loop_mechandplayer'
-		},
-		
-	}) then client.openInventory('zombie', 'zombie'..netId) else lib.notify({
-		title = 'Action',
-		description = 'Vous avez annulé votre action',
-		type = 'success'
-	}) end
-	
-end
-	
-
-
-local function CorpsZombie(entity)
-	local netId = NetworkGetEntityIsNetworked(entity) and NetworkGetNetworkIdFromEntity(entity)
-	
-	local player = PlayerPedId()
-	if not netId then
-		NetworkRegisterEntityAsNetworked(entity)
-		SetEntityAsMissionEntity(entity)
-		netId = NetworkGetNetworkIdFromEntity(entity)
-		NetworkUseHighPrecisionBlending(netId, false)
-		SetNetworkIdExistsOnAllMachines(netId, true)
-		SetNetworkIdCanMigrate(netId, true)
-	end
-	if lib.progressCircle({
-		duration = 5000,
-		position = 'middle',
-		useWhileDead = false,
-		canCancel = true,
-		disable = {
-			car = true,
-		},
-		anim = {
-			dict = 'anim@amb@clubhouse@tutorial@bkr_tut_ig3@',
-			clip = 'machinic_loop_mechandplayer'
-		},
-		
-	}) then TriggerServerEvent("Lastlife:givezombie", player)
-		DeleteEntity(entity) else lib.notify({
-		title = 'Action',
-		description = 'Vous avez annulé votre action',
-		type = 'success'
-	}) end
-	
-end
-	
-
-
-Inventory.zombie = {
-"u_m_m_prolsec_01",
-"a_m_m_hillbilly_01",
-"a_m_m_polynesian_01",
-"a_m_m_skidrow_01",
-"a_m_m_salton_02",
-"a_m_m_fatlatin_01",
-"a_m_m_beach_01",
-"a_m_m_farmer_01",
-"a_m_m_malibu_01",
-"a_m_m_rurmeth_01",
-"a_m_y_salton_01",
-"a_m_m_skater_01",
-"a_m_m_tennis_01",
-"a_m_o_acult_02",
-"a_m_y_genstreet_01",
-"a_m_y_genstreet_02",
-"a_m_y_methhead_01",
-"a_m_y_stlat_01",
-"s_m_m_paramedic_01",
-"s_m_y_cop_01",
-"s_m_y_prismuscl_01",
-"s_m_y_prisoner_01",
-"a_m_m_og_boss_01",
-"a_m_m_eastsa_02",
-"a_f_y_juggalo_01"
-}
-exports.qtarget:AddTargetModel(Inventory.zombie, {
-options = {
-	{
-		icon = "fas fa-hand",
-		label = "Fouiller le zombie",
-		action = function(entity)
-				OpenZombie(entity)
-			end,
-		num = 1
-	},
-	{
-		icon = "fas fa-hand",
-		label = "Ramasser le corps",
-		action = function(entity)
-				CorpsZombie(entity)
-			end,
-		num = 2
-	},
-
-},
-distance = 2
-})
+RegisterNetEvent('ox_inventory:refreshSlotCount', function(data)
+	SendNUIMessage({
+		action = 'refreshSlots',
+		data = {
+			slotsData = {
+				inventoryId = data.inventoryId,
+				slots = data.slots
+			}
+		}
+	})
+end)
 
 return Inventory
