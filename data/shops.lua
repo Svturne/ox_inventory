@@ -189,6 +189,16 @@ return {
         }
     },
 
+    VendingMachineWater = {
+        name = 'Fontaine à eau',
+        inventory = {
+            { name = 'water', price = 20 }
+        },
+        model = {
+            `prop_watercooler_dark`, `prop_watercooler`
+        }
+    },
+
 
     VendingMachineEats = {
         name = 'Distributeur automatique',

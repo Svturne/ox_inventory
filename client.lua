@@ -136,7 +136,7 @@ function client.openInventory(inv, data)
 				if (data?.id or data) == currentInventory?.id then
 					-- Triggering exports.ox_inventory:openInventory('stash', 'mystash') twice in rapid succession is weird behaviour
 					return warn(("script tried to open inventory, but it is already open\n%s"):format(Citizen
-					.InvokeNative(`FORMAT_STACK_TRACE` & 0xFFFFFFFF, nil, 0, Citizen.ResultAsString())))
+						.InvokeNative(`FORMAT_STACK_TRACE` & 0xFFFFFFFF, nil, 0, Citizen.ResultAsString())))
 				else
 					return client.closeInventory()
 				end
@@ -178,8 +178,12 @@ function client.openInventory(inv, data)
 			local targetCoords = targetPed and GetEntityCoords(targetPed)
 
 			if not targetCoords or #(targetCoords - GetEntityCoords(playerPed)) > 1.8 or not (client.hasGroup(shared.police) or canOpenTarget(targetPed)) then
-				return lib.notify({ id = 'inventory_right_access', type = 'error', description = locale(
-				'inventory_right_access') })
+				return lib.notify({
+					id = 'inventory_right_access',
+					type = 'error',
+					description = locale(
+						'inventory_right_access')
+				})
 			end
 		end
 
@@ -208,7 +212,7 @@ function client.openInventory(inv, data)
 					distance = 2
 				else
 					coords = shared.target and right.zones and right.zones[data.index].coords or
-					right.points and right.points[data.index]
+						right.points and right.points[data.index]
 					distance = coords and shared.target and right.zones[data.index].distance or 2
 				end
 
@@ -287,7 +291,7 @@ function client.openInventory(inv, data)
 						local vehicleHash = GetEntityModel(entity)
 						local vehicleClass = GetVehicleClass(entity)
 						currentInventory.door = vehicleClass == 12 and { 2, 3 } or Vehicles.Storage[vehicleHash] and 4 or
-						5
+							5
 					end
 
 					while currentInventory?.entity == entity and invOpen and DoesEntityExist(entity) and Inventory.CanAccessTrunk(entity) do
@@ -303,8 +307,14 @@ function client.openInventory(inv, data)
 		else
 			-- Stash does not exist
 			if left == false then return false end
-			if invOpen == false then lib.notify({ id = 'inventory_right_access', type = 'error', description = locale(
-				'inventory_right_access') }) end
+			if invOpen == false then
+				lib.notify({
+					id = 'inventory_right_access',
+					type = 'error',
+					description = locale(
+						'inventory_right_access')
+				})
+			end
 			if invOpen then client.closeInventory() end
 		end
 	else
@@ -446,7 +456,7 @@ local function useItem(data, cb)
 
 	if result then
 		TriggerEvent('ox_inventory:usedItem', slotData.name, slotData.slot, next(slotData.metadata) and slotData
-		.metadata)
+			.metadata)
 	end
 
 	Wait(500)
@@ -635,8 +645,12 @@ local function useSlot(slot)
 				-- Checks if the weapon already has the same component type attached
 				for componentIndex = 1, #weaponComponents do
 					if componentType == Items[weaponComponents[componentIndex]].type then
-						return lib.notify({ id = 'component_slot_occupied', type = 'error', description = locale(
-						'component_slot_occupied', componentType) })
+						return lib.notify({
+							id = 'component_slot_occupied',
+							type = 'error',
+							description = locale(
+								'component_slot_occupied', componentType)
+						})
 					end
 				end
 
@@ -645,8 +659,12 @@ local function useSlot(slot)
 
 					if DoesWeaponTakeWeaponComponent(currentWeapon.hash, component) then
 						if HasPedGotWeaponComponent(playerPed, currentWeapon.hash, component) then
-							lib.notify({ id = 'component_has', type = 'error', description = locale('component_has',
-								label) })
+							lib.notify({
+								id = 'component_has',
+								type = 'error',
+								description = locale('component_has',
+									label)
+							})
 						else
 							useItem(data, function(data)
 								if data then
@@ -775,7 +793,7 @@ local function registerCommands()
 		onPressed = function(self)
 			if primary:getCurrentKey() == self:getCurrentKey() then
 				return warn(("secondary inventory keybind '%s' disabled (keybind cannot match primary inventory keybind)")
-				:format(self:getCurrentKey()))
+					:format(self:getCurrentKey()))
 			end
 
 			if invOpen then
@@ -783,8 +801,12 @@ local function registerCommands()
 			end
 
 			if invBusy or not canOpenInventory() then
-				return lib.notify({ id = 'inventory_player_access', type = 'error', description = locale(
-				'inventory_player_access') })
+				return lib.notify({
+					id = 'inventory_player_access',
+					type = 'error',
+					description = locale(
+						'inventory_player_access')
+				})
 			end
 
 			if StashTarget then
@@ -819,8 +841,12 @@ local function registerCommands()
 		end
 
 		if invBusy or not canOpenInventory() then
-			return lib.notify({ id = 'inventory_player_access', type = 'error', description = locale(
-			'inventory_player_access') })
+			return lib.notify({
+				id = 'inventory_player_access',
+				type = 'error',
+				description = locale(
+					'inventory_player_access')
+			})
 		end
 
 		if StashTarget then
@@ -944,8 +970,12 @@ local function registerCommands()
 						useSlot(slotId)
 					end
 				else
-					lib.notify({ id = 'no_durability', type = 'error', description = locale('no_durability',
-						currentWeapon.label) })
+					lib.notify({
+						id = 'no_durability',
+						type = 'error',
+						description = locale('no_durability',
+							currentWeapon.label)
+					})
 				end
 			end
 		end
@@ -1463,15 +1493,23 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 
 						if not id or #(playerCoords - pedCoords) > 1.8 or not (client.hasGroup(shared.police) or canOpenTarget(ped)) then
 							client.closeInventory()
-							lib.notify({ id = 'inventory_lost_access', type = 'error', description = locale(
-							'inventory_lost_access') })
+							lib.notify({
+								id = 'inventory_lost_access',
+								type = 'error',
+								description = locale(
+									'inventory_lost_access')
+							})
 						else
 							TaskTurnPedToFaceCoord(playerPed, pedCoords.x, pedCoords.y, pedCoords.z, 50)
 						end
 					elseif currentInventory.coords and (#(playerCoords - currentInventory.coords) > (currentInventory.distance or 2.0) or canOpenTarget(playerPed)) then
 						client.closeInventory()
-						lib.notify({ id = 'inventory_lost_access', type = 'error', description = locale(
-						'inventory_lost_access') })
+						lib.notify({
+							id = 'inventory_lost_access',
+							type = 'error',
+							description = locale(
+								'inventory_lost_access')
+						})
 					end
 				end
 			end
@@ -1603,7 +1641,7 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 								currentAmmo = (weaponAmmo < currentAmmo) and 0 or currentAmmo
 								currentWeapon.metadata.ammo = currentAmmo
 								currentWeapon.metadata.durability = currentWeapon.metadata.durability -
-								(durabilityDrain * math.abs((weaponAmmo or 0.1) - currentAmmo))
+									(durabilityDrain * math.abs((weaponAmmo or 0.1) - currentAmmo))
 							end
 						end
 
@@ -1775,49 +1813,6 @@ end
 
 RegisterNUICallback('giveItem', function(data, cb)
 	cb(1)
-
-	if client.giveplayerlist then
-		local nearbyPlayers = lib.getNearbyPlayers(GetEntityCoords(playerPed), 3.0)
-		local nearbyCount = #nearbyPlayers
-
-		if nearbyCount == 0 then return end
-
-		if nearbyCount == 1 then
-			local option = nearbyPlayers[1]
-
-			if not isGiveTargetValid(option.ped, option.coords) then return end
-
-			return giveItemToTarget(GetPlayerServerId(option.id), data.slot, data.count)
-		end
-
-		local giveList, n = {}, 0
-
-		for i = 1, #nearbyPlayers do
-			local option = nearbyPlayers[i]
-
-			if isGiveTargetValid(option.ped, option.coords) then
-				local playerName = GetPlayerName(option.id)
-				option.id = GetPlayerServerId(option.id)
-				---@diagnostic disable-next-line: inject-field
-				option.label = ('[%s] %s'):format(option.id, playerName)
-				n += 1
-				giveList[n] = option
-			end
-		end
-
-		if n == 0 then return end
-
-		lib.registerMenu({
-			id = 'ox_inventory:givePlayerList',
-			title = 'Give item',
-			options = giveList,
-		}, function(selected)
-			giveItemToTarget(giveList[selected].id, data.slot, data.count)
-		end)
-
-		return lib.showMenu('ox_inventory:givePlayerList')
-	end
-
 	if cache.vehicle then
 		local seats = GetVehicleMaxNumberOfPassengers(cache.vehicle) - 1
 
@@ -1983,7 +1978,7 @@ RegisterNUICallback('craftItem', function(data, cb)
 
 	for i = 1, data.count do
 		local success, response = lib.callback.await('ox_inventory:craftItem', 200, id, index, data.fromSlot, data
-		.toSlot)
+			.toSlot)
 
 		if not success then
 			if response then lib.notify({ type = 'error', description = locale(response or 'cannot_perform') }) end

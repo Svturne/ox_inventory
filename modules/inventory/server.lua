@@ -741,6 +741,8 @@ local function generateItems(inv, invType, items)
 			items = randomLoot(server.dumpsterloot)
 		elseif invType == 'vehicle' then
 			items = randomLoot(server.vehicleloot)
+		elseif invType == 'containerloot' then
+			items = randomLoot(server.container)
 		elseif invType == 'zombie' then
 			items = randomLoot(server.zombieloot)
 		end
@@ -785,7 +787,7 @@ function Inventory.Load(id, invType, owner)
         else
             result = result[invType]
         end
-	elseif invType == 'dumpster' or invType == 'zombie' or invType = 'containerloot'  then
+	elseif invType == 'dumpster' or invType == 'zombie' or invType == 'containerloot'  then
 		if server.randomloot then
 			return generateItems(id, invType)
 		end

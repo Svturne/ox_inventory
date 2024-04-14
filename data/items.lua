@@ -125,6 +125,17 @@ return {
         }
     },
 
+    ['tacos'] = {
+        label = 'Tacos',
+        weight = 220,
+        client = {
+            status = { hunger = 35, poo = 25 },
+            anim = 'eating',
+            prop = 'burger',
+            usetime = 2500
+        }
+    },
+
     ['candy'] = {
         label = 'BonBon',
         weight = 20,

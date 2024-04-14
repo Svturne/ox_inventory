@@ -18,7 +18,7 @@ end
 function Weapon.Equip(item, data)
 	local playerPed = cache.ped
 	local coords = GetEntityCoords(playerPed, true)
-    local sleep
+	local sleep
 
 	if client.weaponanims then
 		if cache.vehicle and vehicleIsCycle(cache.vehicle) then
@@ -33,7 +33,8 @@ function Weapon.Equip(item, data)
 
 		sleep = anim and anim[3] or 1200
 
-		Utils.PlayAnimAdvanced(sleep, anim and anim[1] or 'reaction@intimidation@1h', anim and anim[2] or 'intro', coords.x, coords.y, coords.z, 0, 0, GetEntityHeading(playerPed), 8.0, 3.0, sleep*2, 50, 0.1)
+		Utils.PlayAnimAdvanced(sleep, anim and anim[1] or 'reaction@intimidation@1h', anim and anim[2] or 'intro',
+			coords.x, coords.y, coords.z, 0, 0, GetEntityHeading(playerPed), 8.0, 3.0, sleep * 2, 50, 0.1)
 	end
 
 	::skipAnim::
@@ -52,7 +53,7 @@ function Weapon.Equip(item, data)
 	if item.metadata.components then
 		for i = 1, #item.metadata.components do
 			local components = Items[item.metadata.components[i]].client.component
-			for v=1, #components do
+			for v = 1, #components do
 				local component = components[v]
 				if DoesWeaponTakeWeaponComponent(data.hash, component) then
 					if not HasPedGotWeaponComponent(playerPed, data.hash, component) then
@@ -118,7 +119,8 @@ function Weapon.Disarm(currentWeapon, noAnim)
 
 			local sleep = anim and anim[6] or 1400
 
-			Utils.PlayAnimAdvanced(sleep, anim and anim[4] or 'reaction@intimidation@1h', anim and anim[5] or 'outro', coords.x, coords.y, coords.z, 0, 0, GetEntityHeading(cache.ped), 8.0, 3.0, sleep, 50, 0)
+			Utils.PlayAnimAdvanced(sleep, anim and anim[4] or 'reaction@intimidation@1h', anim and anim[5] or 'outro',
+				coords.x, coords.y, coords.z, 0, 0, GetEntityHeading(cache.ped), 8.0, 3.0, sleep, 50, 0)
 		end
 
 		::skipAnim::
@@ -145,7 +147,7 @@ Utils.Disarm = Weapon.Disarm
 Utils.ClearWeapons = Weapon.ClearAll
 
 Weapon.Equip = function(item, data)
-    local playerPed = cache.ped
+	local playerPed = cache.ped
 
 	if client.weaponanims then
 		if cache.vehicle and vehicleIsCycle(cache.vehicle) then
@@ -159,62 +161,60 @@ Weapon.Equip = function(item, data)
 		-- 	anim = nil
 		-- end
 
-        if anim == anims[`GROUP_PISTOL`] or data.type == "side" then
+		if anim == anims[`GROUP_PISTOL`] or data.type == "side" then
+			if GetConvar('malisling:enable_sling', 'false') == 'true' then
+				local watingForHolster = nil
 
 
-            if GetConvar('malisling:enable_sling', 'false') == 'true' then
-
-                local watingForHolster = nil
-
-                
 				local msg = 'Arme en main:\n~INPUT_TALK~ Prendre l\'arme \n~INPUT_VEH_DROP_PROJECTILE~ Annuler'
 				TriggerEvent('esx:showHelpNotification', msg, msg)
-                lib.requestAnimDict("reaction@intimidation@cop@unarmed")
+				lib.requestAnimDict("reaction@intimidation@cop@unarmed")
 
-                while not IsEntityPlayingAnim(playerPed, "reaction@intimidation@cop@unarmed", "intro", 3) do
-                    TaskPlayAnim(playerPed, "reaction@intimidation@cop@unarmed", "intro", 8.0, 2.0, -1, 50, 2.0, 0, 0, 0 )
-                    Citizen.Wait(10)
-                end
+				while not IsEntityPlayingAnim(playerPed, "reaction@intimidation@cop@unarmed", "intro", 3) do
+					TaskPlayAnim(playerPed, "reaction@intimidation@cop@unarmed", "intro", 8.0, 2.0, -1, 50, 2.0, 0, 0, 0)
+					Citizen.Wait(10)
+				end
 
-                RegisterCommand("confirmHolster", function()
-                    watingForHolster = true
-                end, false)
+				RegisterCommand("confirmHolster", function()
+					watingForHolster = true
+				end, false)
 
-                RegisterCommand("cancelHolster", function()
-                    watingForHolster = false
-                end, false)
+				RegisterCommand("cancelHolster", function()
+					watingForHolster = false
+				end, false)
 
-                while watingForHolster == nil do
-                    Citizen.Wait(100)
-                end
+				while watingForHolster == nil do
+					Citizen.Wait(100)
+				end
 
-                lib.hideTextUI()
+				lib.hideTextUI()
 
-                ClearPedTasks(playerPed)
+				ClearPedTasks(playerPed)
 
-                RegisterCommand("confirmHolster", function() end, false)
+				RegisterCommand("confirmHolster", function() end, false)
 
-                RegisterCommand("cancelHolster", function() end, false)
+				RegisterCommand("cancelHolster", function() end, false)
 
-                if not watingForHolster then return end
-            end
-        end
+				if not watingForHolster then return end
+			end
+		end
 
 		local sleep = anim and anim[3] or 1200
 
 		coords = GetEntityCoords(playerPed, true)
-		Utils.PlayAnimAdvanced(sleep, anim and anim[1] or 'reaction@intimidation@1h', anim and anim[2] or 'intro', coords.x, coords.y, coords.z, 0, 0, GetEntityHeading(playerPed), 8.0, 3.0, sleep*2, 50, 0.1)
+		Utils.PlayAnimAdvanced(sleep, anim and anim[1] or 'reaction@intimidation@1h', anim and anim[2] or 'intro',
+			coords.x, coords.y, coords.z, 0, 0, GetEntityHeading(playerPed), 8.0, 3.0, sleep * 2, 50, 0.1)
 	end
 
 	::skipAnim::
 
-    item.hash = data.hash
+	item.hash = data.hash
 	item.ammo = data.ammoname
 	item.melee = GetWeaponDamageType(data.hash) == 2 and 0
 	item.timer = 0
 	item.throwable = data.throwable
 	item.group = GetWeapontypeGroup(item.hash)
-    
+
 	GiveWeaponToPed(playerPed, data.hash, 0, false, true)
 
 	if item.metadata.tint then SetPedWeaponTintIndex(playerPed, data.hash, item.metadata.tint) end
@@ -222,7 +222,7 @@ Weapon.Equip = function(item, data)
 	if item.metadata.components then
 		for i = 1, #item.metadata.components do
 			local components = Items[item.metadata.components[i]].client.component
-			for v=1, #components do
+			for v = 1, #components do
 				local component = components[v]
 				if DoesWeaponTakeWeaponComponent(data.hash, component) then
 					if not HasPedGotWeaponComponent(playerPed, data.hash, component) then
@@ -262,7 +262,7 @@ Weapon.Equip = function(item, data)
 end
 
 function Weapon.Disarm(currentWeapon, noAnim)
-    if currentWeapon?.timer then
+	if currentWeapon?.timer then
 		currentWeapon.timer = nil
 
 		if source == '' then
@@ -288,7 +288,8 @@ function Weapon.Disarm(currentWeapon, noAnim)
 
 			local sleep = anim and anim[6] or 1400
 
-			Utils.PlayAnimAdvanced(sleep, anim and anim[4] or 'reaction@intimidation@1h', anim and anim[5] or 'outro', coords.x, coords.y, coords.z, 0, 0, GetEntityHeading(cache.ped), 8.0, 3.0, sleep, 50, 0)
+			Utils.PlayAnimAdvanced(sleep, anim and anim[4] or 'reaction@intimidation@1h', anim and anim[5] or 'outro',
+				coords.x, coords.y, coords.z, 0, 0, GetEntityHeading(cache.ped), 8.0, 3.0, sleep, 50, 0)
 		end
 
 		::skipAnim::
@@ -302,29 +303,30 @@ function Weapon.Disarm(currentWeapon, noAnim)
 end
 
 RegisterNetEvent("ox_tipsvturne:sendAnim")
-AddEventHandler("ox_tipsvturne:sendAnim", function (data)
-    local wInfo = data.WeaponData["Weapons"]
+AddEventHandler("ox_tipsvturne:sendAnim", function(data)
+	local wInfo = data.WeaponData["Weapons"]
 	local Items = require 'modules.items.shared'
-	
-    for k, v in pairs(wInfo) do
-        local itemName = k
-        local itemType = wInfo[itemName]["type"]
-		
+
+	for k, v in pairs(wInfo) do
+		local itemName = k
+		local itemType = wInfo[itemName]["type"]
+
 		if not itemType then
-			local s = " "..itemName.." n'est pas présent dans data/weapons.lua ox_tipsvturne"
-			warn(s)
+			local s = " " .. itemName .. " n'est pas présent dans data/weapons.lua ox_tipsvturne"
+			--warn(s)
 		else
 			if data.HolsterData[itemType]["HolsterAnim"] then
 				local animInfo = data.HolsterData[itemType]["HolsterAnim"]
-				local animTable = {animInfo.dict, animInfo.animIn, animInfo.sleep, animInfo.dict, animInfo.animOut, animInfo.sleepOut}
-				
+				local animTable = { animInfo.dict, animInfo.animIn, animInfo.sleep, animInfo.dict, animInfo.animOut,
+					animInfo.sleepOut }
+
 				if Items[itemName] then
 					Items[itemName]["type"] = itemType
 					Items[itemName]["anim"] = animTable
 				end
 			end
 		end
-    end
+	end
 end)
 
 RegisterKeyMapping('confirmHolster', "Prendre l'arme", 'keyboard', "E")
